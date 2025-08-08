@@ -1,4 +1,4 @@
-html {
+hhtml {
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
   font-family: sans-serif;
@@ -1893,10 +1893,14 @@ textarea.w-select {
 }
 :root {
   --black: black;
-  --magenta: magenta;
+  --red: #e74c3c;
+  --orange: #f39c12;
+  --green: #27ae60;
+  --purple: #9b59b6;
   --white: white;
   --_theme---hero-h1: var(--white);
 }
+
 .w-layout-grid {
   grid-row-gap: 16px;
   grid-column-gap: 16px;
@@ -3163,35 +3167,43 @@ figcaption {
 .navbar_menu-button {
   padding: 0;
 }
+/* Keep your base styles */
 .navbar_link {
   margin: 0;
   padding: 0.5rem 1rem;
   font-family: Circularstd book, sans-serif;
   font-weight: 400;
 }
-.navbar_link:hover {
-  color: var(--blue);
+
+/* Different hover color for each link */
+.navbar_link[href="/docs/portfolio.html"]:hover {
+  color: #e74c3c; /* Red for Portfolio */
 }
-.navbar_link:hover2 {
-  color: var(--green);
+.navbar_link[href="/docs/writings.html"]:hover {
+  color: #f39c12; /* Orange for Writings */
 }
-.navbar_link:hover3 {
-  color: var(--yellow);
+.navbar_link[href="/docs/community.html"]:hover {
+  color: #27ae60; /* Green for Community */
 }
-.navbar_link:hover4 {
-  color: var(--orange);
+.navbar_link[href="/docs/contact.html"]:hover {
+  color: #9b59b6; /* Purple for Contact */
 }
-.navbar_link:hover5 {
-  color: var(--red);
+
+/* Handle current page states too */
+.navbar_link.w--current[href="/docs/portfolio.html"]:hover {
+  color: #e74c3c; /* Red */
 }
-.navbar_link.w--current {
-  text-decoration: underline;
+.navbar_link.w--current[href="/docs/writings.html"]:hover {
+  color: #f39c12; /* Orange */
 }
-.navbar_link.w--current:hover {
-  color: var(--magenta);
+.navbar_link.w--current[href="/docs/community.html"]:hover {
+  color: #27ae60; /* Green */
+}
+.navbar_link.w--current[href="/docs/contact.html"]:hover {
+  color: #9b59b6; /* Purple */
 }
 .navbar_link.light-mode {
-  color: var(--black);
+  color: #27ae60;
   background-color: #0000;
 }
 .navbar_symbol-link {
@@ -4797,10 +4809,35 @@ figcaption {
   margin-right: 1rem;
   display: inline;
 }
-.h1-book.magenta {
+
+.h1-book.red {
   z-index: 1;
   opacity: 0;
-  color: var(--magenta);
+  color: #e74c3c;
+  position: absolute;
+  inset: 0%;
+}
+
+.h1-book.orange {
+  z-index: 1;
+  opacity: 0;
+  color: #f39c12;
+  position: absolute;
+  inset: 0%;
+}
+
+.h1-book.green {
+  z-index: 1;
+  opacity: 0;
+  color: #27ae60;
+  position: absolute;
+  inset: 0%;
+}
+
+.h1-book.purple {
+  z-index: 1;
+  opacity: 0;
+  color: #9b59b6;
   position: absolute;
   inset: 0%;
 }
