@@ -1,4 +1,4 @@
-hhtml {
+html {
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
   font-family: sans-serif;
@@ -188,7 +188,7 @@ th {
   content: "î˜€";
 }
 .w-icon-slider-left:before {
-  content: "î˜";
+  content: "î˜";
 }
 .w-icon-nav-menu:before {
   content: "î˜‚";
@@ -2020,7 +2020,7 @@ li {
 }
 img {
   float: right;
-  filter: grayscale();
+  filter: none;
   max-width: 100%;
   display: inline-block;
 }
@@ -2363,7 +2363,7 @@ figcaption {
   color: var(--black);
 }
 .text-color-magenta {
-  color: var(--magenta);
+  color: var(--red);
 }
 .fs-styleguide_2-col {
   grid-column-gap: 4rem;
@@ -2614,9 +2614,6 @@ figcaption {
 .text-align-left {
   text-align: left;
 }
-.background-color-magenta {
-  background-color: #f0f;
-}
 .form_input {
   background-color: #0000;
   min-height: 3rem;
@@ -2654,7 +2651,7 @@ figcaption {
   text-decoration: underline;
 }
 .text-style-link:hover {
-  color: var(--magenta);
+  color: var(--red);
 }
 .text-size-large {
   font-size: 1.5rem;
@@ -2685,9 +2682,6 @@ figcaption {
   font-weight: 600;
   line-height: 1.4;
   display: flex;
-}
-.fs-styleguide_label.is-tag {
-  background-color: var(--magenta);
 }
 .fs-styleguide_version {
   z-index: 5;
@@ -2751,7 +2745,7 @@ figcaption {
   margin-right: auto;
 }
 .button {
-  background-color: var(--magenta);
+  background-color: var(--red);
   color: #fff;
   text-align: center;
   padding: 0.75rem 1rem;
@@ -2761,7 +2755,7 @@ figcaption {
   line-height: 1.2;
 }
 .button.is-text {
-  color: var(--magenta);
+  color: var(--red);
   background-color: #0000;
   border: 2px solid #0000;
 }
@@ -2789,7 +2783,7 @@ figcaption {
   grid-row-gap: 1rem;
   background-image: radial-gradient(
     circle farthest-corner at 100% 50%,
-    var(--magenta),
+    var(--red),
     transparent
   );
   flex-direction: row;
@@ -2800,12 +2794,12 @@ figcaption {
   display: flex;
 }
 .button.is-icon:hover {
-  background-color: #c700c7;
-  background-image: radial-gradient(circle at 100%, #f0f, #fff0);
+  background-color: #f39c12;
+  background-image: radial-gradient(circle at 100%, var(--red), #fff0);
 }
 .button.is-icon.jobs {
   z-index: 4;
-  color: var(--magenta);
+  color: var(--red);
   background-color: #0000;
   background-image: none;
   font-size: 1.5rem;
@@ -2829,7 +2823,7 @@ figcaption {
   display: flex;
 }
 .button.is-post:hover {
-  color: var(--magenta);
+  color: var(--red);
 }
 .fs-styleguide_classes {
   grid-column-gap: 1px;
@@ -3253,10 +3247,35 @@ figcaption {
 .global_content-component.full-width {
   max-width: none;
 }
-.tagline-block {
-  background-color: var(--magenta);
+.tagline-block-portfolio {
+  background-color: var(--red);
   width: 1rem;
   height: 1rem;
+  border-radius: 50%;
+  margin: 0.375rem 0 0;
+  padding: 0;
+}
+.tagline-block-writings {
+  background-color: var(--orange);
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  margin: 0.375rem 0 0;
+  padding: 0;
+}
+.tagline-block-community {
+  background-color: var(--green);
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  margin: 0.375rem 0 0;
+  padding: 0;
+}
+.tagline-block-contact {
+  background-color: var(--purple);
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
   margin: 0.375rem 0 0;
   padding: 0;
 }
@@ -3455,7 +3474,7 @@ figcaption {
   display: flex;
 }
 .footer_social-link:hover {
-  color: var(--magenta);
+  color: var(--purple);
 }
 .social-icon {
   width: 1.5rem;
@@ -3463,7 +3482,7 @@ figcaption {
   padding-top: 4px;
 }
 .social-icon:hover {
-  color: var(--magenta);
+  color: var(--purple);
 }
 .section_global-header {
   grid-column-gap: 12vmin;
@@ -3647,8 +3666,8 @@ figcaption {
   border-radius: 50%;
 }
 .radio-button.w--redirected-checked {
-  border-color: var(--magenta);
-  background-color: var(--magenta);
+  border-color: var(--green);
+  background-color: var(--green);
   background-image: none;
   background-repeat: repeat;
   background-size: auto;
@@ -3658,8 +3677,8 @@ figcaption {
   background-color: #0000;
 }
 .radio-button.light-mode.w--redirected-checked {
-  border-color: var(--magenta);
-  background-color: var(--magenta);
+  border-color: var(--green);
+  background-color: var(--green);
 }
 .filter_drawer-line-divider {
   background-color: currentColor;
@@ -4063,7 +4082,7 @@ figcaption {
 }
 .idea_rich-text a,
 .idea_rich-text a:hover {
-  color: var(--magenta);
+  color: var(--red);
 }
 .idea_rich-text img {
   margin-top: 3rem;
@@ -4087,7 +4106,7 @@ figcaption {
   text-decoration: none;
 }
 .post_detail-link:hover {
-  color: var(--magenta);
+  color: var(--red);
 }
 .post_author-list {
   grid-column-gap: 3rem;
@@ -4176,8 +4195,8 @@ figcaption {
   box-shadow: 0 1px;
 }
 .button-post:hover {
-  border-bottom-color: var(--magenta);
-  color: var(--magenta);
+  border-bottom-color: var(--red);
+  color: var(--red);
 }
 .button-post.light-mode {
   border-bottom-color: var(--black);
@@ -4397,14 +4416,14 @@ figcaption {
   display: grid;
 }
 .icon-button-2 {
-  color: #f0f;
+  color: var(--red);
   width: 2rem;
   height: 2rem;
 }
 .button-2 {
   color: #fff;
   text-align: center;
-  background-color: #f0f;
+  background-color: var(--red);
   padding: 0.75rem 1rem;
   font-family: Circularstd book, sans-serif;
   font-size: 2rem;
@@ -4414,7 +4433,7 @@ figcaption {
 .button-2.is-icon {
   grid-column-gap: 1rem;
   grid-row-gap: 1rem;
-  background-image: radial-gradient(circle at 100%, #f0f, #0000);
+  background-image: radial-gradient(circle at 100%, var(--red), #0000);
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
@@ -4423,11 +4442,11 @@ figcaption {
   display: flex;
 }
 .button-2.is-icon:hover {
-  background-color: #c700c7;
-  background-image: radial-gradient(circle at 100%, #f0f, #fff0);
+  background-color: #f39c12;
+  background-image: radial-gradient(circle at 100%, var(--red), #fff0);
 }
 .tagline-block-2 {
-  background-color: #f0f;
+  background-color: var(--red);
   width: 1rem;
   height: 1rem;
   margin: 0.375rem 0 0;
@@ -4695,7 +4714,7 @@ figcaption {
   display: flex;
 }
 .button-primary {
-  background-color: var(--magenta);
+  background-color: var(--red);
   color: #fff;
   text-align: center;
   padding: 0.75rem 0.625rem;
@@ -4706,7 +4725,7 @@ figcaption {
   transition: background-color 0.5s;
 }
 .button-primary:hover {
-  background-color: #c0c;
+  background-color: #f39c12;
 }
 .button-primary.is-text {
   grid-column-gap: 0.5rem;
@@ -4722,9 +4741,85 @@ figcaption {
   display: flex;
 }
 .button-primary.is-text:hover {
-  box-shadow: 0 1px 0 0 var(--magenta);
-  color: var(--magenta);
+  box-shadow: 0 1px 0 0 var(--red);
+  color: var(--red);
 }
+/* Portfolio section - Red */
+.section_portfolio .button-primary {
+  background-color: #e74c3c !important;
+  color: #fff !important; /* Keep text white */
+}
+
+.section_portfolio .button-primary:hover {
+  background-color: #c0392b !important;
+  color: #fff !important; /* Keep text white */
+}
+
+.section_portfolio .button-post:hover {
+  border-bottom-color: #e74c3c !important;
+  color: #e74c3c !important; /* This should be colored for "Read" links */
+}
+
+.section_portfolio .button-primary.is-text:hover {
+  box-shadow: 0 1px 0 0 #e74c3c !important;
+  color: #e74c3c !important;
+}
+
+/* Writings section - Orange */
+.section_writings .button-primary {
+  background-color: #f39c12 !important;
+  color: #fff !important; /* Keep text white */
+}
+
+.section_writings .button-primary:hover {
+  background-color: #e67e22 !important;
+  color: #fff !important; /* Keep text white */
+}
+
+.section_writings .button-post:hover {
+  border-bottom-color: #f39c12 !important;
+  color: #f39c12 !important;
+}
+
+.section_writings .button-primary.is-text:hover {
+  box-shadow: 0 1px 0 0 #f39c12 !important;
+  color: #f39c12 !important;
+}
+
+/* Set default state to prevent magenta flash */
+.ideas_featured-content-link .button-post {
+  color: #fff !important;
+  border-bottom-color: #fff !important;
+  transition: none !important; /* Disable transition to prevent flash */
+}
+
+/* Keep Read button orange on hover */
+.ideas_featured-content-link:hover .button-post {
+  color: #f39c12 !important;
+  border-bottom-color: #f39c12 !important;
+}
+
+/* Community section - Green */
+.section_community .button-primary {
+  background-color: #27ae60 !important;
+  color: #fff !important; /* Keep text white */
+}
+
+.section_community .button-primary:hover {
+  background-color: #229954 !important;
+  color: #fff !important; /* Keep text white */
+}
+
+.section_community .button-post:hover {
+  border-bottom-color: #27ae60 !important;
+  color: #27ae60 !important;
+}
+
+.section_community .button-primary.is-text:hover {
+  box-shadow: 0 1px 0 0 #27ae60 !important;
+  color: #27ae60 !important;
+}
+
 .button-primary.is-small {
   padding: 0.5rem;
   font-size: 1.25rem;
@@ -4756,11 +4851,11 @@ figcaption {
   display: flex;
 }
 .button-primary.is-icon:hover {
-  background-color: #c0c;
+  background-color: #f39c12;
 }
 .button-primary.is-icon.jobs {
   z-index: 4;
-  color: var(--magenta);
+  color: var(--red);
   background-color: #0000;
   background-image: none;
   font-size: 1.5rem;
@@ -4784,7 +4879,7 @@ figcaption {
   display: flex;
 }
 .button-primary.is-post:hover {
-  color: var(--magenta);
+  color: var(--red);
 }
 .heading-h1-new {
   color: var(--_theme---hero-h1);
@@ -5012,7 +5107,7 @@ figcaption {
   box-shadow: 0 1px;
 }
 .team_profile-button:hover {
-  color: var(--magenta);
+  color: var(--green);
 }
 .team_profile-button.is-text {
   grid-column-gap: 0.5rem;
@@ -5028,8 +5123,8 @@ figcaption {
   display: flex;
 }
 .team_profile-button.is-text:hover {
-  box-shadow: 0 1px 0 0 var(--magenta);
-  color: var(--magenta);
+  box-shadow: 0 1px 0 0 var(--green);
+  color: var(--green);
 }
 .team_profile-button.is-small {
   padding: 0.5rem;
@@ -5066,7 +5161,7 @@ figcaption {
 }
 .team_profile-button.is-icon.jobs {
   z-index: 4;
-  color: var(--magenta);
+  color: var(--green);
   background-color: #0000;
   background-image: none;
   font-size: 1.5rem;
@@ -5090,7 +5185,7 @@ figcaption {
   display: flex;
 }
 .team_profile-button.is-post:hover {
-  color: var(--magenta);
+  color: var(--green);
 }
 .team_profile-detail {
   grid-column-gap: 1rem;
@@ -5357,7 +5452,7 @@ figcaption {
   display: flex;
 }
 .careers_quote-block {
-  background-color: var(--magenta);
+  background-color: var(--purple);
   width: 0.5rem;
   height: 0.5rem;
   margin: 0 0 0.125rem;
@@ -5495,8 +5590,8 @@ figcaption {
   display: flex;
 }
 .careers_perks-button.is-text:hover {
-  box-shadow: 0 1px 0 0 var(--magenta);
-  color: var(--magenta);
+  box-shadow: 0 1px 0 0 var(--purple);
+  color: var(--purple);
 }
 .careers_perks-button.is-small {
   padding: 0.5rem;
@@ -5533,7 +5628,7 @@ figcaption {
 }
 .careers_perks-button.is-icon.jobs {
   z-index: 4;
-  color: var(--magenta);
+  color: var(--purple);
   background-color: #0000;
   background-image: none;
   font-size: 1.5rem;
@@ -5557,7 +5652,7 @@ figcaption {
   display: flex;
 }
 .careers_perks-button.is-post:hover {
-  color: var(--magenta);
+  color: var(--purple);
 }
 .careers_perks-hidden {
   overflow: hidden;
@@ -5812,8 +5907,8 @@ figcaption {
   display: flex;
 }
 .careers_opportunities-button.is-text:hover {
-  box-shadow: 0 1px 0 0 var(--magenta);
-  color: var(--magenta);
+  box-shadow: 0 1px 0 0 var(--purple);
+  color: var(--purple);
 }
 .careers_opportunities-button.is-small {
   padding: 0.5rem;
@@ -5850,7 +5945,7 @@ figcaption {
 }
 .careers_opportunities-button.is-icon.jobs {
   z-index: 4;
-  color: var(--magenta);
+  color: var(--purple);
   background-color: #0000;
   background-image: none;
   font-size: 1.5rem;
@@ -5874,17 +5969,17 @@ figcaption {
   display: flex;
 }
 .careers_opportunities-button.is-post:hover {
-  color: var(--magenta);
+  color: var(--purple);
 }
 .careers_opportunities-block {
-  background-color: var(--magenta);
+  background-color: var(--purple);
   width: 0.75rem;
   height: 0.75rem;
   margin: 0;
   padding: 0;
 }
 .temporary_dropdown {
-  background-color: var(--magenta);
+  background-color: var(--red);
   pointer-events: auto;
   margin-top: 0.5rem;
   margin-left: auto;
@@ -5924,10 +6019,10 @@ figcaption {
   right: 0;
 }
 .temporary_dropdown-link:hover {
-  background-color: #ffffff1a;
+  background-color: #f39c12;
 }
 .temporary_dropdown-link.w--current {
-  color: var(--magenta);
+  color: var(--red);
 }
 .careers_perks-item {
   grid-column-gap: 1rem;
