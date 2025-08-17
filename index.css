@@ -3197,7 +3197,7 @@ figcaption {
   color: #9b59b6; /* Purple */
 }
 .navbar_link.light-mode {
-  color: #27ae60;
+  color: var(--black);
   background-color: #0000;
 }
 .navbar_symbol-link {
