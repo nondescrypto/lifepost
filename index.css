@@ -3171,16 +3171,16 @@ figcaption {
 
 /* Different hover color for each link */
 .navbar_link[href="/docs/interests.html"]:hover {
-  color: #e74c3c; /* Red for Portfolio */
+  color: #e74c3c !important;/* Red for Portfolio */
 }
 .navbar_link[href="/docs/writings.html"]:hover {
-  color: #f39c12; /* Orange for Writings */
+  color: #f39c12 !important; /* Orange for Writings */
 }
 .navbar_link[href="/docs/community.html"]:hover {
-  color: #27ae60; /* Green for Community */
+  color: #27ae60 !important; /* Green for Community */
 }
 .navbar_link[href="/docs/contact.html"]:hover {
-  color: #9b59b6; /* Purple for Contact */
+  color: #9b59b6 !important; /* Purple for Contact */
 }
 
 /* Handle current page states too */
