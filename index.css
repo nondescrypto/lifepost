@@ -3170,7 +3170,7 @@ figcaption {
 }
 
 /* Different hover color for each link */
-.navbar_link[href="/docs/portfolio.html"]:hover {
+.navbar_link[href="/docs/interests.html"]:hover {
   color: #e74c3c; /* Red for Portfolio */
 }
 .navbar_link[href="/docs/writings.html"]:hover {
@@ -3184,7 +3184,7 @@ figcaption {
 }
 
 /* Handle current page states too */
-.navbar_link.w--current[href="/docs/portfolio.html"]:hover {
+.navbar_link.w--current[href="/docs/interests.html"]:hover {
   color: #e74c3c; /* Red */
 }
 .navbar_link.w--current[href="/docs/writings.html"]:hover {
