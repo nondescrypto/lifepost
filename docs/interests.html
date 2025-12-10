@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html data-wf-domain="www.lifepost.xyz" data-wf-page="66fcb0b95a37326a2a32b999" data-wf-site="6369fc8df5a9a195c2ed2135">
   <head><meta charset="utf-8"/>
-    <title>Lifepost - Portfolio</title>
-    <meta content="Lifepost portfolio showcasing our investments in blockchain and community-building technologies" name="description"/>
-    <meta content="Lifepost - Portfolio" property="og:title"/>
-    <meta content="Lifepost portfolio showcasing our investments in blockchain and community-building technologies" property="og:description"/>
+    <title>Lifepost - Writings</title>
+    <meta content="Lifepost writings and insights on community building and blockchain technology" name="description"/>
+    <meta content="Lifepost - Writings" property="og:title"/>
+    <meta content="Lifepost writings and insights on community building and blockchain technology" property="og:description"/>
     <meta content="" property="og:image"/>
-    <meta content="Lifepost - Portfolio" property="twitter:title"/>
-    <meta content="Lifepost portfolio showcasing our investments in blockchain and community-building technologies" property="twitter:description"/>
+    <meta content="Lifepost - Writings" property="twitter:title"/>
+    <meta content="Lifepost writings and insights on community building and blockchain technology" property="twitter:description"/>
     <meta content="" property="twitter:image"/>
     <meta property="og:type" content="website"/>
     <meta content="summary_large_image" name="twitter:card"/>
@@ -76,21 +76,21 @@ document.addEventListener("DOMContentLoaded", function(event) {
 </script>
 
 <style>
-/* Additional styles for the portfolio list */
-.portfolio-list {
+/* Additional styles for the writings list */
+.writings-list {
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
 }
 
-.portfolio-list h1 {
+.writings-list h1 {
   font-size: 3rem;
   margin-bottom: 3rem;
   text-align: center;
   color: var(--_theme---hero-h1, #ffffff);
 }
 
-.portfolio-item {
+.article-item {
   display: flex;
   align-items: center;
   background: rgba(255, 255, 255, 0.05);
@@ -103,42 +103,26 @@ document.addEventListener("DOMContentLoaded", function(event) {
   color: inherit;
 }
 
-.portfolio-item:hover {
+.article-item:hover {
   background: rgba(255, 255, 255, 0.08);
   transform: translateY(-4px);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
-.portfolio-image {
-  width: 120px;
-  height: 120px;
+.article-image {
+  width: 200px;
+  height: 150px;
   object-fit: cover;
   border-radius: 12px;
   margin-right: 2rem;
   flex-shrink: 0;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 1rem;
 }
 
-.portfolio-content {
+.article-content {
   flex: 1;
 }
 
-.portfolio-title {
-  font-size: 1.8rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
-  color: var(--_theme---hero-h1, #ffffff);
-}
-
-.portfolio-description {
-  color: #ccc;
-  line-height: 1.6;
-  margin-bottom: 1rem;
-  font-size: 1rem;
-}
-
-.portfolio-category {
+.article-category {
   display: inline-block;
   background: rgba(34, 197, 94, 0.2);
   color: #22c55e;
@@ -149,7 +133,26 @@ document.addEventListener("DOMContentLoaded", function(event) {
   margin-bottom: 1rem;
 }
 
-.visit-link {
+.article-date {
+  color: #888;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.article-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--_theme---hero-h1, #ffffff);
+}
+
+.article-description {
+  color: #ccc;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.read-more {
   color: #22c55e;
   font-weight: 500;
   display: inline-flex;
@@ -157,27 +160,27 @@ document.addEventListener("DOMContentLoaded", function(event) {
   gap: 0.5rem;
 }
 
-.visit-link svg {
+.read-more svg {
   width: 16px;
   height: 16px;
   transition: transform 0.3s ease;
 }
 
-.portfolio-item:hover .visit-link svg {
+.article-item:hover .read-more svg {
   transform: translateX(4px);
 }
 
 @media (max-width: 768px) {
-  .portfolio-item {
+  .article-item {
     flex-direction: column;
     text-align: center;
   }
   
-  .portfolio-image {
+  .article-image {
     margin-right: 0;
     margin-bottom: 1rem;
-    width: 100px;
-    height: 100px;
+    width: 100%;
+    max-width: 300px;
   }
 }
 </style>
@@ -521,71 +524,70 @@ margin: 0rem !important;
         
       </div></div>
 
-<!-- MAIN CONTENT - PORTFOLIO LIST -->
-
+<!-- MAIN CONTENT - WRITINGS LIST -->
 <main class="main-wrapper">
   <section class="writings-list">
     <h1>Interests shaping some of our world</h1>
     
-   <a href="/docs/interests/privacy.html" target="_blank" class="portfolio-item">
-  <img src="https://www.svgrepo.com/show/435125/shield.svg" alt="Privacy logo" class="portfolio-image">
-  <div class="article-content portfolio-content">
-    <div class="portfolio-category">Securing Identity & Communication</div>
-    <h2 class="portfolio-title">Privacy</h2>
-    <p class="portfolio-description">TODO</p>
-    <div class="visit-link">
-      More on Privacy
-      <svg width="100%" height="100%" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M24 12.3671L17.6203 7V11.3291H0V13.4304H17.6203V17.7089L24 12.3671Z"/>
-      </svg>
-    </div>
-  </div>
-</a>
+    <a href="/docs/interests/privacy.html" target="_blank" class="article-item">
+      <img src="https://www.svgrepo.com/show/435125/shield.svg" alt="Privacy logo" class="article-image">
+      <div class="article-content article-content">
+        <div class="article-category">Securing Identity & Communication</div>
+        <h2 class="article-title">Privacy</h2>
+        <p class="article-description">TODO</p>
+        <div class="read-more">
+          More on Privacy
+          <svg width="100%" height="100%" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M24 12.3671L17.6203 7V11.3291H0V13.4304H17.6203V17.7089L24 12.3671Z"/>
+          </svg>
+        </div>
+      </div>
+    </a>
 
-<a href="/docs/interests/web3.html" target="_blank" class="portfolio-item">
-  <img src="https://www.svgrepo.com/show/395137/network.svg" alt="Web3 logo" class="portfolio-image">
-  <div class="portfolio-content">
-    <div class="portfolio-category">Internet Infrastructure & Design</div>
-    <h2 class="portfolio-title">Web3</h2>
-    <p class="portfolio-description">TODO</p>
-    <div class="visit-link">
-      More on Web3
-      <svg width="100%" height="100%" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M24 12.3671L17.6203 7V11.3291H0V13.4304H17.6203V17.7089L24 12.3671Z"/>
-      </svg>
-    </div>
-  </div>
-</a>
+    <a href="/docs/interests/web3.html" target="_blank" class="article-item">
+      <img src="https://www.svgrepo.com/show/395137/network.svg" alt="Web3 logo" class="article-image">
+      <div class="article-content">
+        <div class="article-category">Internet Infrastructure & Design</div>
+        <h2 class="article-title">Web3</h2>
+        <p class="article-description">TODO</p>
+        <div class="read-more">
+          More on Web3
+          <svg width="100%" height="100%" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M24 12.3671L17.6203 7V11.3291H0V13.4304H17.6203V17.7089L24 12.3671Z"/>
+          </svg>
+        </div>
+      </div>
+    </a>
 
-<a href="/docs/interests/markets.html" target="_blank" class="portfolio-item">
-  <img src="https://www.svgrepo.com/show/419279/chart-diagram-linegraph.svg" alt="Markets logo" class="portfolio-image">
-  <div class="portfolio-content">
-    <div class="portfolio-category">Society's Interests</div>
-    <h2 class="portfolio-title">Markets</h2>
-    <p class="portfolio-description">TODO</p>
-    <div class="visit-link">
-      More on Markets
-      <svg width="100%" height="100%" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M24 12.3671L17.6203 7V11.3291H0V13.4304H17.6203V17.7089L24 12.3671Z"/>
-      </svg>
-    </div>
-  </div>
-</a>
+    <a href="/docs/interests/markets.html" target="_blank" class="article-item">
+      <img src="https://www.svgrepo.com/show/419279/chart-diagram-linegraph.svg" alt="Markets logo" class="article-image">
+      <div class="article-content">
+        <div class="article-category">Society's Interests</div>
+        <h2 class="article-title">Markets</h2>
+        <p class="article-description">TODO</p>
+        <div class="read-more">
+          More on Markets
+          <svg width="100%" height="100%" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M24 12.3671L17.6203 7V11.3291H0V13.4304H17.6203V17.7089L24 12.3671Z"/>
+          </svg>
+        </div>
+      </div>
+    </a>
 
-<a href="/docs/interests/travel.html" target="_blank" class="portfolio-item">
-  <img src="https://www.svgrepo.com/show/371310/globe.svg" alt="Travel logo" class="portfolio-image">
-  <div class="portfolio-content">
-    <div class="portfolio-category">Society's Obsession</div>
-    <h2 class="portfolio-title">Travel</h2>
-    <p class="portfolio-description">TODO</p>
-    <div class="visit-link">
-      More on Travel
-      <svg width="100%" height="100%" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M24 12.3671L17.6203 7V11.3291H0V13.4304H17.6203V17.7089L24 12.3671Z"/>
-      </svg>
-    </div>
-  </div>
-</a>
+    <a href="/docs/interests/travel.html" target="_blank" class="article-item">
+      <img src="https://www.svgrepo.com/show/371310/globe.svg" alt="Travel logo" class="article-image">
+      <div class="article-content">
+        <div class="article-category">Society's Obsession</div>
+        <h2 class="article-title">Travel</h2>
+        <p class="article-description">TODO</p>
+        <div class="read-more">
+          More on Travel
+          <svg width="100%" height="100%" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M24 12.3671L17.6203 7V11.3291H0V13.4304H17.6203V17.7089L24 12.3671Z"/>
+          </svg>
+        </div>
+      </div>
+    </a>
 
   </section>
 </main>
