@@ -90,6 +90,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
   color: var(--_theme---hero-h1, #ffffff);
 }
 
+.writings-list h3 {
+  text-align: center;
+}
+
+.writings-list h3 + .cards-grid:has(.article-item:only-child) {
+  justify-items: center;
+}
+
 .cards-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -616,7 +624,7 @@ margin: 0rem !important;
     </div>
 
     <!-- Email Options Section -->
-    <h2 style="color: var(--_theme---hero-h1, #ffffff); font-size: 2rem; margin-top: 3rem; margin-bottom: 1.5rem;">Email Options</h2>
+    <h2 style="color: var(--_theme---hero-h1, #ffffff); font-size: 2rem; margin-top: 3rem; margin-bottom: 1.5rem;">Email Providers</h2>
     
     <div class="cards-grid">
       <a href="https://proton.me/mail" target="_blank" class="article-item">
@@ -845,7 +853,7 @@ margin: 0rem !important;
       </a>
     </div>
 
-    <h3 style="color: #888; font-size: 1.2rem; margin-top: 2rem; margin-bottom: 1rem;">Browser Add-Ons</h3>
+    <h3 style="color: var(--_theme---hero-h1, #ffffff); font-size: 1.2rem; margin-top: 2rem; margin-bottom: 1rem;">Browser Add-Ons</h3>
     
     <div class="cards-grid">
       <a href="https://ublockorigin.com" target="_blank" class="article-item">

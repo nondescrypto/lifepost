@@ -77,6 +77,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 <style>
 /* Additional styles for the writings list */
+/* Additional styles for the writings list */
 .writings-list {
   max-width: 1200px;
   margin: 0 auto;
@@ -88,6 +89,42 @@ document.addEventListener("DOMContentLoaded", function(event) {
   margin-bottom: 3rem;
   text-align: center;
   color: var(--_theme---hero-h1, #ffffff);
+}
+
+.writings-list h3 {
+  text-align: center;
+}
+
+.writings-list h3 + .cards-grid:has(.article-item:only-child) {
+  justify-items: center;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* Center single item in grid */
+.cards-grid:has(.article-item:only-child) {
+  grid-template-columns: 1fr;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Center third item when there are 3 items */
+.cards-grid .article-item:nth-child(3):nth-last-child(1) {
+  grid-column: 1 / -1;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .article-item {
@@ -525,86 +562,90 @@ margin: 0rem !important;
       </div></div>
 
 <!-- MAIN CONTENT - WRITINGS LIST -->
- <main class="main-wrapper">
+<main class="main-wrapper">
   <section class="writings-list">
     <h1>Trading in Web3</h1>
     
     <!-- Section -->
     <h2 style="color: var(--_theme---hero-h1, #ffffff); font-size: 2rem; margin-top: 3rem; margin-bottom: 1.5rem;">Decentralized Exchange (DEX)</h2>
     
-    <a href="https://hyperfoundation.org" target="_blank" class="article-item">
-      <img src="https://hyperfoundation.org/landing/blob_green.gif" alt="Hyperliquid logo" class="article-image">
-      <div class="article-content">
-        <div class="article-category">DEX</div>
-        <div class="article-category">Permissionless</div>
-        <div class="article-category">Leverage Trading</div>
-        <h2 class="article-title">Hyperliquid</h2>
-        <p class="article-description">Best known for perpetual futures and spot trading, however they are quickly expanding to housing myriad applications on their own EVM chain.</p>
-        <div class="read-more">
-          Visit Hyperliquid
-          <svg width="100%" height="100%" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M24 12.3671L17.6203 7V11.3291H0V13.4304H17.6203V17.7089L24 12.3671Z"/>
-          </svg>
+    <div class="cards-grid">
+      <a href="https://hyperfoundation.org" target="_blank" class="article-item">
+        <img src="https://hyperfoundation.org/landing/blob_green.gif" alt="Hyperliquid logo" class="article-image">
+        <div class="article-content">
+          <div class="article-category">DEX</div>
+          <div class="article-category">Permissionless</div>
+          <div class="article-category">Leverage Trading</div>
+          <h2 class="article-title">Hyperliquid</h2>
+          <p class="article-description">Best known for perpetual futures and spot trading, however they are quickly expanding to housing myriad applications on their own EVM chain.</p>
+          <div class="read-more">
+            Visit Hyperliquid
+            <svg width="100%" height="100%" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M24 12.3671L17.6203 7V11.3291H0V13.4304H17.6203V17.7089L24 12.3671Z"/>
+            </svg>
+          </div>
         </div>
-      </div>
-    </a>
+      </a>
+      
+      <a href="https://lighter.xyz" target="_blank" class="article-item">
+        <img src="https://assets.coingecko.com/markets/images/22097/large/lighter.jpg?1758003181" alt="Lighter logo" class="article-image">
+        <div class="article-content">
+          <div class="article-category">DEX</div>
+          <div class="article-category">Permissionless</div>
+          <div class="article-category">Leverage Trading</div>
+          <h2 class="article-title">Lighter</h2>
+          <p class="article-description">Perpetual futures trading powered by ZK technology.</p>
+          <div class="read-more">
+            Visit Lighter
+            <svg width="100%" height="100%" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M24 12.3671L17.6203 7V11.3291H0V13.4304H17.6203V17.7089L24 12.3671Z"/>
+            </svg>
+          </div>
+        </div>
+      </a>
+      
+      <a href="https://fx.aladdin.club/" target="_blank" class="article-item">
+        <img src="https://fx.aladdin.club/images/FXN.svg" alt="f(x) logo" class="article-image">
+        <div class="article-content">
+          <div class="article-category">DEX</div>
+          <div class="article-category">Permissionless</div>
+          <div class="article-category">Leverage Trading</div>
+          <h2 class="article-title">f(x) Protocol</h2>
+          <p class="article-description">Perpetual futures trading with minimized risk of liquidations.</p>
+          <div class="read-more">
+            Visit f(x) Protocol
+            <svg width="100%" height="100%" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M24 12.3671L17.6203 7V11.3291H0V13.4304H17.6203V17.7089L24 12.3671Z"/>
+            </svg>
+          </div>
+        </div>
+      </a>
+    </div>
     
-    <a href="https://lighter.xyz" target="_blank" class="article-item">
-      <img src="https://assets.coingecko.com/markets/images/22097/large/lighter.jpg?1758003181" alt="Lighter logo" class="article-image">
-      <div class="article-content">
-        <div class="article-category">DEX</div>
-        <div class="article-category">Permissionless</div>
-        <div class="article-category">Leverage Trading</div>
-        <h2 class="article-title">Lighter</h2>
-        <p class="article-description">Perpetual futures trading powered by ZK technology.</p>
-        <div class="read-more">
-          Visit Lighter
-          <svg width="100%" height="100%" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M24 12.3671L17.6203 7V11.3291H0V13.4304H17.6203V17.7089L24 12.3671Z"/>
-          </svg>
-        </div>
-      </div>
-    </a>
-    
-    <a href="https://fx.aladdin.club/" target="_blank" class="article-item">
-      <img src="https://fx.aladdin.club/images/FXN.svg" alt="f(x) logo" class="article-image">
-      <div class="article-content">
-        <div class="article-category">DEX</div>
-        <div class="article-category">Permissionless</div>
-        <div class="article-category">Leverage Trading</div>
-        <h2 class="article-title">f(x) Protocol</h2>
-        <p class="article-description">Perpetual futures trading with minimized risk of liquidations.</p>
-        <div class="read-more">
-          Visit f(x) Protocol
-          <svg width="100%" height="100%" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M24 12.3671L17.6203 7V11.3291H0V13.4304H17.6203V17.7089L24 12.3671Z"/>
-          </svg>
-        </div>
-      </div>
-    </a>
-
     <!-- Section -->
     <h2 style="color: var(--_theme---hero-h1, #ffffff); font-size: 2rem; margin-top: 3rem; margin-bottom: 1.5rem;">Prop Trading Fund</h2>
-
-    <a href="https://breakoutprop.com" target="_blank" class="article-item">
-      <img src="https://downloads.intercomcdn.com/i/o/454860/c99bb5ec106ea574ad033588/e1240891b043788def6017c7c2474e8d.png" alt="Breakout logo" class="article-image">
-      <div class="article-content">
-        <div class="article-category">KYC</div>
-        <div class="article-category">Leverage Trading</div>
-        <h2 class="article-title">Breakout</h2>
-        <p class="article-description">Get funded to trade the cryptocurrency market for a small fee.</p>
-        <div class="read-more">
-          Visit Breakout
-          <svg width="100%" height="100%" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M24 12.3671L17.6203 7V11.3291H0V13.4304H17.6203V17.7089L24 12.3671Z"/>
-          </svg>
-        </div>
-      </div>
-    </a>
     
+    <div class="cards-grid">
+      <a href="https://breakoutprop.com" target="_blank" class="article-item">
+        <img src="https://downloads.intercomcdn.com/i/o/454860/c99bb5ec106ea574ad033588/e1240891b043788def6017c7c2474e8d.png" alt="Breakout logo" class="article-image">
+        <div class="article-content">
+          <div class="article-category">KYC</div>
+          <div class="article-category">Leverage Trading</div>
+          <h2 class="article-title">Breakout</h2>
+          <p class="article-description">Get funded to trade the cryptocurrency market for a small fee.</p>
+          <div class="read-more">
+            Visit Breakout
+            <svg width="100%" height="100%" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M24 12.3671L17.6203 7V11.3291H0V13.4304H17.6203V17.7089L24 12.3671Z"/>
+            </svg>
+          </div>
+        </div>
+      </a>
+    </div>
     
   </section>
 </main>
+
 
 <!-- FOOTER (preserved from original) -->
 <div class="footer_component">
