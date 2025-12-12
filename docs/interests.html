@@ -81,6 +81,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
 }
 
 .writings-list h1 {
@@ -88,6 +91,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
   margin-bottom: 3rem;
   text-align: center;
   color: var(--_theme---hero-h1, #ffffff);
+  grid-column: 1 / -1; /* Makes the h1 span across both columns */
+}
+
+@media (max-width: 768px) {
+  .writings-list {
+    grid-template-columns: 1fr; /* Stack on mobile */
+  }
 }
 
 .article-item {
@@ -529,7 +539,7 @@ margin: 0rem !important;
   <section class="writings-list">
     <h1>Interests shaping some of our world</h1>
     
-    <a href="/docs/interests/privacy.html" target="_blank" class="article-item">
+    <a href="/docs/interests/privacy.html" class="article-item">
       <img src="https://www.svgrepo.com/show/435125/shield.svg" alt="Privacy logo" class="article-image">
       <div class="article-content article-content">
         <div class="article-category">Securing Identity & Communication</div>
@@ -544,7 +554,7 @@ margin: 0rem !important;
       </div>
     </a>
 
-    <a href="/docs/interests/web3.html" target="_blank" class="article-item">
+    <a href="/docs/interests/web3.html" class="article-item">
       <img src="https://www.svgrepo.com/show/395137/network.svg" alt="Web3 logo" class="article-image">
       <div class="article-content">
         <div class="article-category">Internet Infrastructure & Design</div>
@@ -559,7 +569,7 @@ margin: 0rem !important;
       </div>
     </a>
 
-    <a href="/docs/interests/markets.html" target="_blank" class="article-item">
+    <a href="/docs/interests/markets.html" class="article-item">
       <img src="https://www.svgrepo.com/show/419279/chart-diagram-linegraph.svg" alt="Markets logo" class="article-image">
       <div class="article-content">
         <div class="article-category">Society's Interests</div>
@@ -574,7 +584,7 @@ margin: 0rem !important;
       </div>
     </a>
 
-    <a href="/docs/interests/travel.html" target="_blank" class="article-item">
+    <a href="/docs/interests/travel.html" class="article-item">
       <img src="https://www.svgrepo.com/show/371310/globe.svg" alt="Travel logo" class="article-image">
       <div class="article-content">
         <div class="article-category">Society's Obsession</div>
