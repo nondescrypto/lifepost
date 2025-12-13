@@ -89,11 +89,16 @@ document.addEventListener("DOMContentLoaded", function(event) {
   text-align: center;
   color: var(--_theme---hero-h1, #ffffff);
 }
-
+  
+.writings-list h2 {
+  text-align: center;
+}
+  /* Center h3 subsection headings */
 .writings-list h3 {
   text-align: center;
 }
 
+/* For cards-grid sections that follow h3 headings with only one item */
 .writings-list h3 + .cards-grid:has(.article-item:only-child) {
   justify-items: center;
 }
@@ -126,17 +131,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
   }
 }
 
+/* Ensure grid items all match size */
 .article-item {
+  height: 220px;              /* fixed card height — adjust as needed */
+  min-height: 220px;
   display: flex;
-  align-items: center;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 16px;
-  padding: 2rem;
-  margin-bottom: 2rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: all 0.3s ease;
-  text-decoration: none;
-  color: inherit;
+  align-items: stretch;       /* allow children to stretch vertically */
+  gap: 1rem;
 }
 
 .article-item:hover {
@@ -145,21 +146,34 @@ document.addEventListener("DOMContentLoaded", function(event) {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
+/* Make image keep aspect and a consistent box size */
 .article-image {
-  width: 200px;
-  height: 150px;
+  width: 260px;               /* fixed image box width */
+  height: 100%;               /* fill the card height */
   object-fit: cover;
   border-radius: 12px;
-  margin-right: 2rem;
+  margin: 0;
   flex-shrink: 0;
 }
 
+/* Make content fill remaining vertical space and layout consistently */
 .article-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* keeps title/desc/read-more nicely spaced */
+  padding: 0 0 0 1rem;
   flex: 1;
 }
 
+.article-meta { display:flex; gap:0.5rem; flex-wrap:wrap; align-items:center; margin-bottom:0.5rem; }
+
+  
 .article-category {
   display: inline-block;
+  width: auto !important;
+  max-width: none !important;
+  flex: 0 0 auto !important;       /* don't grow or shrink */
+  align-self: flex-start !important;/* don't stretch to parent's cross axis */
   background: rgba(34, 197, 94, 0.2);
   color: #22c55e;
   padding: 0.25rem 0.75rem;
@@ -206,19 +220,29 @@ document.addEventListener("DOMContentLoaded", function(event) {
   transform: translateX(4px);
 }
 
+/* Small screens: use auto height and stacked layout */
 @media (max-width: 768px) {
   .article-item {
+    height: auto;
     flex-direction: column;
+    align-items: center;
     text-align: center;
+    padding: 1.5rem;
   }
-  
+
   .article-image {
-    margin-right: 0;
-    margin-bottom: 1rem;
     width: 100%;
     max-width: 300px;
+    height: auto;
+    margin-bottom: 1rem;
+  }
+
+  .article-content {
+    padding: 0;
+    justify-content: center;
   }
 }
+
 </style>
 </head>
   
@@ -566,14 +590,16 @@ margin: 0rem !important;
     <h1>Interacting with Web3</h1>
     
     <!-- Section -->
-    <h2 style="color: var(--_theme---hero-h1, #ffffff); font-size: 2rem; margin-top: 3rem; margin-bottom: 1.5rem;">EVM Wallets</h2>
-    
+    <h2 style="color: var(--\_theme---hero-h1, #ffffff); font-size: 2rem; margin-top: 3rem; margin-bottom: 1.5rem;">EVM Wallets</h2>
+
     <div class="cards-grid">
-      <a href="https://metamask.io/" target="_blank" class="article-item">
-        <img src="https://pbs.twimg.com/profile_images/1945525968732295169/fqmzhm8Q_400x400.jpg" alt="Metamask logo" class="article-image">
+      <a href="https://metamask.io/" target="\_blank" class="article-item">
+        <img src="https://pbs.twimg.com/profile\_images/1945525968732295169/fqmzhm8Q\_400x400.jpg" alt="Metamask logo" class="article-image">
         <div class="article-content">
-          <div class="article-category">Propreietary</div>
-          <div class="article-category">Your IP is at risk if you don't change the RPC provider</div>
+          <div class="article-meta">
+            <div class="article-category">Propreietary</div>
+            <div class="article-category">Your IP is at risk if you don't change the RPC provider</div>
+          </div>
           <h2 class="article-title">Metamask</h2>
           <p class="article-description">One of the longest standing and known wallet provider for the EVM.</p>
           <div class="read-more">
@@ -585,11 +611,13 @@ margin: 0rem !important;
         </div>
       </a>
       
-      <a href="https://blockwallet.io/" target="_blank" class="article-item">
-        <img src="https://pbs.twimg.com/profile_images/1661794373397348368/YOCvmKDD_400x400.jpg" alt="Block Wallet logo" class="article-image">
+      <a href="https://blockwallet.io/" target="\_blank" class="article-item">
+        <img src="https://pbs.twimg.com/profile\_images/1661794373397348368/YOCvmKDD\_400x400.jpg" alt="Block Wallet logo" class="article-image">
         <div class="article-content">
-          <div class="article-category">FOSS</div>
-          <div class="article-category">Privacy</div>
+          <div class="article-meta">
+            <div class="article-category">FOSS</div>
+            <div class="article-category">Privacy</div>
+          </div>
           <h2 class="article-title">Block Wallet</h2>
           <p class="article-description">FOSS Wallet that emphasizes privacy and true self-custudy.</p>
           <div class="read-more">
@@ -601,11 +629,13 @@ margin: 0rem !important;
         </div>
       </a>
       
-      <a href="https://frame.sh/" target="_blank" class="article-item">
-        <img src="https://pbs.twimg.com/profile_images/1803717184528510976/BcGG2Sp2_400x400.jpg" alt="Frame logo" class="article-image">
+      <a href="https://frame.sh/" target="\_blank" class="article-item">
+        <img src="https://pbs.twimg.com/profile\_images/1803717184528510976/BcGG2Sp2\_400x400.jpg" alt="Frame logo" class="article-image">
         <div class="article-content">
-          <div class="article-category">FOSS</div>
-          <div class="article-category">Desktop</div>
+          <div class="article-meta">
+            <div class="article-category">FOSS</div>
+            <div class="article-category">Desktop</div>
+          </div>
           <h2 class="article-title">frame</h2>
           <p class="article-description">Intuitive and compact desktop wallet experience</p>
           <div class="read-more">
@@ -619,14 +649,16 @@ margin: 0rem !important;
     </div>
 
     <!-- Section -->
-    <h2 style="color: var(--_theme---hero-h1, #ffffff); font-size: 2rem; margin-top: 3rem; margin-bottom: 1.5rem;">Hosting</h2>
+    <h2 style="color: var(--\_theme---hero-h1, #ffffff); font-size: 2rem; margin-top: 3rem; margin-bottom: 1.5rem;">Hosting</h2>
 
     <div class="cards-grid">
-      <a href="https://dashboard.4everland.org/" target="_blank" class="article-item">
+      <a href="https://dashboard.4everland.org/" target="\_blank" class="article-item">
         <img src="https://dashboard.4everland.org/img/svg/logo.svg" alt="4everland logo" class="article-image">
         <div class="article-content">
-          <div class="article-category">IPFS</div>
-          <div class="article-category">Hosting</div>
+          <div class="article-meta">
+            <div class="article-category">IPFS</div>
+            <div class="article-category">Hosting</div>
+          </div>
           <h2 class="article-title">4everland</h2>
           <p class="article-description">Host you websites leveraging IPFS and Github for a seemless experience.</p>
           <div class="read-more">
@@ -640,14 +672,16 @@ margin: 0rem !important;
     </div>
 
     <!-- Section -->
-    <h2 style="color: var(--_theme---hero-h1, #ffffff); font-size: 2rem; margin-top: 3rem; margin-bottom: 1.5rem;">Domain Names</h2>
+    <h2 style="color: var(--\_theme---hero-h1, #ffffff); font-size: 2rem; margin-top: 3rem; margin-bottom: 1.5rem;">Domain Names</h2>
 
     <div class="cards-grid">
-      <a href="https://www.my.box/" target="_blank" class="article-item">
-        <img src="https://pbs.twimg.com/profile_images/1911105827240337408/kKgBluAh_400x400.jpg" alt="Box logo" class="article-image">
+      <a href="https://www.my.box/" target="\_blank" class="article-item">
+        <img src="https://pbs.twimg.com/profile\_images/1911105827240337408/kKgBluAh\_400x400.jpg" alt="Box logo" class="article-image">
         <div class="article-content">
-          <div class="article-category">DNS</div>
-          <div class="article-category">ENS</div>
+          <div class="article-meta">
+            <div class="article-category">DNS</div>
+            <div class="article-category">ENS</div>
+          </div>
           <h2 class="article-title">.box</h2>
           <p class="article-description">Purchase domain names compatible with both web2 & web3.</p>
           <div class="read-more">
@@ -659,11 +693,13 @@ margin: 0rem !important;
         </div>
       </a>
 
-      <a href="https://unstoppabledomains.com/" target="_blank" class="article-item">
-        <img src="https://pbs.twimg.com/profile_images/1952461136764280833/Af91AfU7_400x400.jpg" alt="Unstoppable logo" class="article-image">
+      <a href="https://unstoppabledomains.com/" target="\_blank" class="article-item">
+        <img src="https://pbs.twimg.com/profile\_images/1952461136764280833/Af91AfU7\_400x400.jpg" alt="Unstoppable logo" class="article-image">
         <div class="article-content">
-          <div class="article-category">DNS</div>
-          <div class="article-category">ENS</div>
+          <div class="article-meta">
+            <div class="article-category">DNS</div>
+            <div class="article-category">ENS</div>
+          </div>
           <h2 class="article-title">Unstoppable Domains</h2>
           <p class="article-description">Purchase domain names compatible with both web2 or web3.</p>
           <div class="read-more">
@@ -677,14 +713,16 @@ margin: 0rem !important;
     </div>
 
     <!-- Section -->
-    <h2 style="color: var(--_theme---hero-h1, #ffffff); font-size: 2rem; margin-top: 3rem; margin-bottom: 1.5rem;">DNS Resolver</h2>
+    <h2 style="color: var(--\_theme---hero-h1, #ffffff); font-size: 2rem; margin-top: 3rem; margin-bottom: 1.5rem;">DNS Resolver</h2>
 
     <div class="cards-grid">
-      <a href="https://cloudflare.com" target="_blank" class="article-item">
-        <img src="https://pbs.twimg.com/profile_images/1600539069217480704/RzK50Sks_400x400.jpg" alt="Cloudflare logo" class="article-image">
+      <a href="https://cloudflare.com" target="\_blank" class="article-item">
+        <img src="https://pbs.twimg.com/profile\_images/1600539069217480704/RzK50Sks\_400x400.jpg" alt="Cloudflare logo" class="article-image">
         <div class="article-content">
-          <div class="article-category">DNS</div>
-          <div class="article-category">Infrastructure</div>
+          <div class="article-meta">
+            <div class="article-category">DNS</div>
+            <div class="article-category">Infrastructure</div>
+          </div>
           <h2 class="article-title">Cloudflare</h2>
           <p class="article-description">Link you DNS to web hosting platform</p>
           <div class="read-more">
@@ -696,6 +734,7 @@ margin: 0rem !important;
         </div>
       </a>
     </div>
+
     
   </section>
 </main>

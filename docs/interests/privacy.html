@@ -89,11 +89,16 @@ document.addEventListener("DOMContentLoaded", function(event) {
   text-align: center;
   color: var(--_theme---hero-h1, #ffffff);
 }
-
+  
+.writings-list h2 {
+  text-align: center;
+}
+  /* Center h3 subsection headings */
 .writings-list h3 {
   text-align: center;
 }
 
+/* For cards-grid sections that follow h3 headings with only one item */
 .writings-list h3 + .cards-grid:has(.article-item:only-child) {
   justify-items: center;
 }
@@ -126,17 +131,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
   }
 }
 
+/* Ensure grid items all match size */
 .article-item {
+  height: 220px;              /* fixed card height — adjust as needed */
+  min-height: 220px;
   display: flex;
-  align-items: center;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 16px;
-  padding: 2rem;
-  margin-bottom: 2rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: all 0.3s ease;
-  text-decoration: none;
-  color: inherit;
+  align-items: stretch;       /* allow children to stretch vertically */
+  gap: 1rem;
 }
 
 .article-item:hover {
@@ -145,21 +146,34 @@ document.addEventListener("DOMContentLoaded", function(event) {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
+/* Make image keep aspect and a consistent box size */
 .article-image {
-  width: 200px;
-  height: 150px;
+  width: 260px;               /* fixed image box width */
+  height: 100%;               /* fill the card height */
   object-fit: cover;
   border-radius: 12px;
-  margin-right: 2rem;
+  margin: 0;
   flex-shrink: 0;
 }
 
+/* Make content fill remaining vertical space and layout consistently */
 .article-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* keeps title/desc/read-more nicely spaced */
+  padding: 0 0 0 1rem;
   flex: 1;
 }
 
+.article-meta { display:flex; gap:0.5rem; flex-wrap:wrap; align-items:center; margin-bottom:0.5rem; }
+
+  
 .article-category {
   display: inline-block;
+  width: auto !important;
+  max-width: none !important;
+  flex: 0 0 auto !important;       /* don't grow or shrink */
+  align-self: flex-start !important;/* don't stretch to parent's cross axis */
   background: rgba(34, 197, 94, 0.2);
   color: #22c55e;
   padding: 0.25rem 0.75rem;
@@ -206,19 +220,29 @@ document.addEventListener("DOMContentLoaded", function(event) {
   transform: translateX(4px);
 }
 
+/* Small screens: use auto height and stacked layout */
 @media (max-width: 768px) {
   .article-item {
+    height: auto;
     flex-direction: column;
+    align-items: center;
     text-align: center;
+    padding: 1.5rem;
   }
-  
+
   .article-image {
-    margin-right: 0;
-    margin-bottom: 1rem;
     width: 100%;
     max-width: 300px;
+    height: auto;
+    margin-bottom: 1rem;
+  }
+
+  .article-content {
+    padding: 0;
+    justify-content: center;
   }
 }
+
 </style>
 </head>
   
@@ -565,241 +589,259 @@ margin: 0rem !important;
   <section class="writings-list">
     <h1>Privacy Essentials</h1>
     
-    <!-- Messenger Section -->
-    <h2 style="color: var(--_theme---hero-h1, #ffffff); font-size: 2rem; margin-top: 3rem; margin-bottom: 1.5rem;">Messengers</h2>
-    
-    <div class="cards-grid">
-      <a href="https://signal.org" target="_blank" class="article-item">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Signal-Logo-Ultramarine_%282024%29.svg/250px-Signal-Logo-Ultramarine_%282024%29.svg.png" alt="Signal logo" class="article-image">
-        <div class="article-content">
-          <div class="article-category">Centralized</div>
-          <div class="article-category">Free</div>
-          <h2 class="article-title">Signal</h2>
-          <p class="article-description">Secure messaging with end-to-end encryption</p>
-          <div class="read-more">
-            Visit Signal
-            <svg width="100%" height="100%" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M24 12.3671L17.6203 7V11.3291H0V13.4304H17.6203V17.7089L24 12.3671Z"/>
-            </svg>
-          </div>
-        </div>
-      </a>
-      
-      <a href="https://getsession.org" target="_blank" class="article-item">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Session_App_Logo.svg/250px-Session_App_Logo.svg.png" alt="Session logo" class="article-image">
-        <div class="article-content">
-          <div class="article-category">FOSS</div>
-          <div class="article-category">Web3</div>
-          <div class="article-category">Feature-Limited</div>
-          <h2 class="article-title">Session</h2>
-          <p class="article-description">Decentralized private messaging</p>
-          <div class="read-more">
-            Visit Session
-            <svg width="100%" height="100%" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M24 12.3671L17.6203 7V11.3291H0V13.4304H17.6203V17.7089L24 12.3671Z"/>
-            </svg>
-          </div>
-        </div>
-      </a>
+ <!-- Messenger Section -->
+<h2 style="color: var(--_theme---hero-h1, #ffffff); font-size: 2rem; margin-top: 3rem; margin-bottom: 1.5rem;">Messengers</h2>
+
+<div class="cards-grid">
+  <a href="https://signal.org" target="_blank" class="article-item">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Signal-Logo-Ultramarine_%282024%29.svg/250px-Signal-Logo-Ultramarine_%282024%29.svg.png" alt="Signal logo" class="article-image">
+    <div class="article-content">
+      <div class="article-meta">
+        <div class="article-category">FOSS</div>
+        <div class="article-category">Centralized</div>
+      </div>
+      <h2 class="article-title">Signal</h2>
+      <p class="article-description">Secure messaging with end-to-end encryption</p>
+      <div class="read-more">
+        Visit Signal
+        <svg width="100%" height="100%" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M24 12.3671L17.6203 7V11.3291H0V13.4304H17.6203V17.7089L24 12.3671Z"/>
+        </svg>
+      </div>
     </div>
+  </a>
 
-    <!-- Video Call Section -->
-    <h3 style="color: var(--_theme---hero-h1, #ffffff); font-size: 1.2rem; margin-top: 2rem; margin-bottom: 1rem;">Video Conference (Zoom/Google Meet Alternative)</h3>
-    
-    <div class="cards-grid">
-      <a href="https://jitsi.org" target="_blank" class="article-item">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Logo_Jitsi.svg/250px-Logo_Jitsi.svg.png" alt="Jitsi logo" class="article-image">
-        <div class="article-content">
-          <div class="article-category">FOSS</div>
-          <h2 class="article-title">Jitsi</h2>
-          <p class="article-description">Open-source video conferencing</p>
-          <div class="read-more">
-            Visit Jitsi
-            <svg width="100%" height="100%" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M24 12.3671L17.6203 7V11.3291H0V13.4304H17.6203V17.7089L24 12.3671Z"/>
-            </svg>
-          </div>
-        </div>
-      </a>
+  <a href="https://getsession.org" target="_blank" class="article-item">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Session_App_Logo.svg/250px-Session_App_Logo.svg.png" alt="Session logo" class="article-image">
+    <div class="article-content">
+      <div class="article-meta">
+        <div class="article-category">FOSS</div>
+        <div class="article-category">Web3</div>
+      </div>
+      <h2 class="article-title">Session</h2>
+      <p class="article-description">Decentralized private messaging</p>
+      <div class="read-more">
+        Visit Session
+        <svg width="100%" height="100%" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M24 12.3671L17.6203 7V11.3291H0V13.4304H17.6203V17.7089L24 12.3671Z"/>
+        </svg>
+      </div>
     </div>
+  </a>
+</div>
 
-    <!-- Email Options Section -->
-    <h2 style="color: var(--_theme---hero-h1, #ffffff); font-size: 2rem; margin-top: 3rem; margin-bottom: 1.5rem;">Email Providers</h2>
-    
-    <div class="cards-grid">
-      <a href="https://proton.me/mail" target="_blank" class="article-item">
-        <img src="https://www.privacyguides.org/en/assets/img/email/protonmail.svg" alt="Proton logo" class="article-image">
-        <div class="article-content">
-          <div class="article-category">Proprietary</div>
-          <div class="article-category">Freemium</div>
-          <h2 class="article-title">Proton Mail</h2>
-          <p class="article-description">Encrypted email service</p>
-          <div class="read-more">
-            Visit Proton
-            <svg width="100%" height="100%" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M24 12.3671L17.6203 7V11.3291H0V13.4304H17.6203V17.7089L24 12.3671Z"/>
-            </svg>
-          </div>
-        </div>
-      </a>
+<!-- Video Call Section -->
+<h3 style="color: var(--_theme---hero-h1, #ffffff); font-size: 1.2rem; margin-top: 2rem; margin-bottom: 1rem;">Video Conference (Zoom/Google Meet Alternative)</h3>
 
-      <a href="https://tuta.com" target="_blank" class="article-item">
-        <img src="https://www.privacyguides.org/en/assets/img/email/tuta-dark.svg#only-dark" alt="Tuta logo" class="article-image">
-        <div class="article-content">
-          <div class="article-category">Proprietary</div>
-          <div class="article-category">Freemium</div>
-          <h2 class="article-title">Tuta</h2>
-          <p class="article-description">Secure email with end-to-end encryption</p>
-          <div class="read-more">
-            Visit Tuta
-            <svg width="100%" height="100%" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M24 12.3671L17.6203 7V11.3291H0V13.4304H17.6203V17.7089L24 12.3671Z"/>
-            </svg>
-          </div>
-        </div>
-      </a>
-
-      <a href="https://mailbox.org" target="_blank" class="article-item">
-        <img src="https://www.privacyguides.org/en/assets/img/email/mailbox-mail.svg" alt="Mailbox logo" class="article-image">
-        <div class="article-content">
-          <div class="article-category">Proprietary</div>
-          <div class="article-category">Paid</div>
-          <div class="article-category">Powered by Green Energy</div>
-          <h2 class="article-title">Mailbox</h2>
-          <p class="article-description">Private email with green energy</p>
-          <div class="read-more">
-            Visit Mailbox
-            <svg width="100%" height="100%" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M24 12.3671L17.6203 7V11.3291H0V13.4304H17.6203V17.7089L24 12.3671Z"/>
-            </svg>
-          </div>
-        </div>
-      </a>
+<div class="cards-grid">
+  <a href="https://jitsi.org" target="_blank" class="article-item">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Logo_Jitsi.svg/250px-Logo_Jitsi.svg.png" alt="Jitsi logo" class="article-image">
+    <div class="article-content">
+      <div class="article-meta">
+        <div class="article-category">FOSS</div>
+      </div>
+      <h2 class="article-title">Jitsi</h2>
+      <p class="article-description">Open-source video conferencing</p>
+      <div class="read-more">
+        Visit Jitsi
+        <svg width="100%" height="100%" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M24 12.3671L17.6203 7V11.3291H0V13.4304H17.6203V17.7089L24 12.3671Z"/>
+        </svg>
+      </div>
     </div>
+  </a>
+</div>
 
-    <!-- Password Manager Section -->
-    <h2 style="color: var(--_theme---hero-h1, #ffffff); font-size: 2rem; margin-top: 3rem; margin-bottom: 1.5rem;">Password Manager</h2>
+<!-- Email Options Section -->
+<h2 style="color: var(--_theme---hero-h1, #ffffff); font-size: 2rem; margin-top: 3rem; margin-bottom: 1.5rem;">Email Options</h2>
 
-    <div class="cards-grid">
-      <a href="https://bitwarden.com" target="_blank" class="article-item">
-        <img src="https://www.privacyguides.org/en/assets/img/password-management/bitwarden.svg" alt="Bitwarden logo" class="article-image">
-        <div class="article-content">
-          <div class="article-category">FOSS</div>
-          <h2 class="article-title">Bitwarden</h2>
-          <p class="article-description">Open-source password management</p>
-          <div class="read-more">
-            Visit Bitwarden
-            <svg width="100%" height="100%" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M24 12.3671L17.6203 7V11.3291H0V13.4304H17.6203V17.7089L24 12.3671Z"/>
-            </svg>
-          </div>
-        </div>
-      </a>
-
-      <a href="https://psono.com" target="_blank" class="article-item">
-        <img src="https://www.privacyguides.org/en/assets/img/password-management/psono.svg" alt="Psono logo" class="article-image">
-        <div class="article-content">
-          <div class="article-category">FOSS</div>
-          <h2 class="article-title">Psono</h2>
-          <p class="article-description">Self-hosted password manager</p>
-          <div class="read-more">
-            Visit Psono
-            <svg width="100%" height="100%" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M24 12.3671L17.6203 7V11.3291H0V13.4304H17.6203V17.7089L24 12.3671Z"/>
-            </svg>
-          </div>
-        </div>
-      </a>
-
-      <a href="https://proton.me/pass" target="_blank" class="article-item">
-        <img src="https://www.privacyguides.org/en/assets/img/password-management/protonpass.svg" alt="Proton Pass logo" class="article-image">
-        <div class="article-content">
-          <div class="article-category">Proprietary</div>
-          <div class="article-category">Paid</div>
-          <h2 class="article-title">Proton Pass</h2>
-          <p class="article-description">Encrypted password manager</p>
-          <div class="read-more">
-            Visit Proton Pass
-            <svg width="100%" height="100%" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M24 12.3671L17.6203 7V11.3291H0V13.4304H17.6203V17.7089L24 12.3671Z"/>
-            </svg>
-          </div>
-        </div>
-      </a>
+<div class="cards-grid">
+  <a href="https://proton.me/mail" target="_blank" class="article-item">
+    <img src="https://www.privacyguides.org/en/assets/img/email/protonmail.svg" alt="Proton logo" class="article-image">
+    <div class="article-content">
+      <div class="article-meta">
+        <div class="article-category">Freemium</div>
+      </div>
+      <h2 class="article-title">Proton Mail</h2>
+      <p class="article-description">Encrypted email service</p>
+      <div class="read-more">
+        Visit Proton
+        <svg width="100%" height="100%" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M24 12.3671L17.6203 7V11.3291H0V13.4304H17.6203V17.7089L24 12.3671Z"/>
+        </svg>
+      </div>
     </div>
-    
-    <!-- VPN Section -->
-    <h2 style="color: var(--_theme---hero-h1, #ffffff); font-size: 2rem; margin-top: 3rem; margin-bottom: 1.5rem;">VPN</h2>
+  </a>
 
-    <div class="cards-grid">
-      <a href="https://www.ivpn.net" target="_blank" class="article-item">
-        <img src="https://www.ivpn.net/images/logo.svg" alt="IVPN logo" class="article-image">
-        <div class="article-content">
-          <div class="article-category">Proprietary</div>
-          <div class="article-category">Paid</div>
-          <h2 class="article-title">IVPN</h2>
-          <p class="article-description">Privacy-focused VPN service</p>
-          <div class="read-more">
-            Visit IVPN
-            <svg width="100%" height="100%" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M24 12.3671L17.6203 7V11.3291H0V13.4304H17.6203V17.7089L24 12.3671Z"/>
-            </svg>
-          </div>
-        </div>
-      </a>
-
-      <a href="https://mullvad.net" target="_blank" class="article-item">
-        <img src="https://www.privacyguides.org/en/assets/img/vpn/mullvad.svg" alt="Mullvad logo" class="article-image">
-        <div class="article-content">
-          <div class="article-category">Propreietary</div>
-          <div class="article-category">Paid</div>
-          <h2 class="article-title">Mullvad</h2>
-          <p class="article-description">Anonymous VPN with cash payments</p>
-          <div class="read-more">
-            Visit Mullvad
-            <svg width="100%" height="100%" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M24 12.3671L17.6203 7V11.3291H0V13.4304H17.6203V17.7089L24 12.3671Z"/>
-            </svg>
-          </div>
-        </div>
-      </a>
-      
-      <a href="https://protonvpn.com" target="_blank" class="article-item">
-        <img src="https://www.privacyguides.org/en/assets/img/vpn/protonvpn.svg" alt="Proton VPN logo" class="article-image">
-        <div class="article-content">
-          <div class="article-category">Proprietary</div>
-          <div class="article-category">Paid</div>
-          <h2 class="article-title">Proton VPN</h2>
-          <p class="article-description">Secure VPN with no-logs policy</p>
-          <div class="read-more">
-            Visit Proton VPN
-            <svg width="100%" height="100%" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M24 12.3671L17.6203 7V11.3291H0V13.4304H17.6203V17.7089L24 12.3671Z"/>
-            </svg>
-          </div>
-        </div>
-      </a>
+  <a href="https://tuta.com" target="_blank" class="article-item">
+    <img src="https://www.privacyguides.org/en/assets/img/email/tuta-dark.svg#only-dark" alt="Tuta logo" class="article-image">
+    <div class="article-content">
+      <div class="article-meta">
+        <div class="article-category">Freemium</div>
+      </div>
+      <h2 class="article-title">Tuta</h2>
+      <p class="article-description">Secure email with end-to-end encryption</p>
+      <div class="read-more">
+        Visit Tuta
+        <svg width="100%" height="100%" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M24 12.3671L17.6203 7V11.3291H0V13.4304H17.6203V17.7089L24 12.3671Z"/>
+        </svg>
+      </div>
     </div>
+  </a>
 
-    <h3 style="color: var(--_theme---hero-h1, #ffffff); font-size: 1.2rem; margin-top: 2rem; margin-bottom: 1rem;">Mixnet</h3>
-    
-    <div class="cards-grid">
-      <a href="https://nym.com" target="_blank" class="article-item">
-        <img src="https://nym.com/_next/image?url=https%3A%2F%2Fassets.nym.com%2FLayer_1_ca673a606c.svg&w=3840&q=80" alt="NYM logo" class="article-image">
-        <div class="article-content">
-          <div class="article-category">Web3</div>
-          <div class="article-category">Paid</div>
-          <h2 class="article-title">NYM</h2>
-          <p class="article-description">Decentralized privacy network</p>
-          <div class="read-more">
-            Visit NYM
-            <svg width="100%" height="100%" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M24 12.3671L17.6203 7V11.3291H0V13.4304H17.6203V17.7089L24 12.3671Z"/>
-            </svg>
-          </div>
-        </div>
-      </a>
+  <a href="https://mailbox.org" target="_blank" class="article-item">
+    <img src="https://www.privacyguides.org/en/assets/img/email/mailbox-mail.svg" alt="Mailbox logo" class="article-image">
+    <div class="article-content">
+      <div class="article-meta">
+        <div class="article-category">Paid</div>
+        <div class="article-category">Green Energy</div>
+      </div>
+      <h2 class="article-title">Mailbox</h2>
+      <p class="article-description">Private email with green energy</p>
+      <div class="read-more">
+        Visit Mailbox
+        <svg width="100%" height="100%" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M24 12.3671L17.6203 7V11.3291H0V13.4304H17.6203V17.7089L24 12.3671Z"/>
+        </svg>
+      </div>
     </div>
+  </a>
+</div>
+
+<!-- Password Manager Section -->
+<h2 style="color: var(--_theme---hero-h1, #ffffff); font-size: 2rem; margin-top: 3rem; margin-bottom: 1.5rem;">Password Manager</h2>
+
+<div class="cards-grid">
+  <a href="https://bitwarden.com" target="_blank" class="article-item">
+    <img src="https://www.privacyguides.org/en/assets/img/password-management/bitwarden.svg" alt="Bitwarden logo" class="article-image">
+    <div class="article-content">
+      <div class="article-meta">
+        <div class="article-category">FOSS</div>
+      </div>
+      <h2 class="article-title">Bitwarden</h2>
+      <p class="article-description">Open-source password management</p>
+      <div class="read-more">
+        Visit Bitwarden
+        <svg width="100%" height="100%" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M24 12.3671L17.6203 7V11.3291H0V13.4304H17.6203V17.7089L24 12.3671Z"/>
+        </svg>
+      </div>
+    </div>
+  </a>
+
+  <a href="https://psono.com" target="_blank" class="article-item">
+    <img src="https://www.privacyguides.org/en/assets/img/password-management/psono.svg" alt="Psono logo" class="article-image">
+    <div class="article-content">
+      <div class="article-meta">
+        <div class="article-category">FOSS</div>
+      </div>
+      <h2 class="article-title">Psono</h2>
+      <p class="article-description">Self-hosted password manager</p>
+      <div class="read-more">
+        Visit Psono
+        <svg width="100%" height="100%" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M24 12.3671L17.6203 7V11.3291H0V13.4304H17.6203V17.7089L24 12.3671Z"/>
+        </svg>
+      </div>
+    </div>
+  </a>
+
+  <a href="https://proton.me/pass" target="_blank" class="article-item">
+    <img src="https://www.privacyguides.org/en/assets/img/password-management/protonpass.svg" alt="Proton Pass logo" class="article-image">
+    <div class="article-content">
+      <div class="article-meta">
+        <div class="article-category">Paid</div>
+      </div>
+      <h2 class="article-title">Proton Pass</h2>
+      <p class="article-description">Encrypted password manager</p>
+      <div class="read-more">
+        Visit Proton Pass
+        <svg width="100%" height="100%" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M24 12.3671L17.6203 7V11.3291H0V13.4304H17.6203V17.7089L24 12.3671Z"/>
+        </svg>
+      </div>
+    </div>
+  </a>
+</div>
+
+<!-- VPN Section -->
+<h2 style="color: var(--_theme---hero-h1, #ffffff); font-size: 2rem; margin-top: 3rem; margin-bottom: 1.5rem;">VPN</h2>
+
+<div class="cards-grid">
+  <a href="https://www.ivpn.net" target="_blank" class="article-item">
+    <img src="https://www.ivpn.net/images/logo.svg" alt="IVPN logo" class="article-image">
+    <div class="article-content">
+      <div class="article-meta">
+        <div class="article-category">Paid</div>
+      </div>
+      <h2 class="article-title">IVPN</h2>
+      <p class="article-description">Privacy-focused VPN service</p>
+      <div class="read-more">
+        Visit IVPN
+        <svg width="100%" height="100%" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M24 12.3671L17.6203 7V11.3291H0V13.4304H17.6203V17.7089L24 12.3671Z"/>
+        </svg>
+      </div>
+    </div>
+  </a>
+
+  <a href="https://mullvad.net" target="_blank" class="article-item">
+    <img src="https://www.privacyguides.org/en/assets/img/vpn/mullvad.svg" alt="Mullvad logo" class="article-image">
+    <div class="article-content">
+      <div class="article-meta">
+        <div class="article-category">Paid</div>
+      </div>
+      <h2 class="article-title">Mullvad</h2>
+      <p class="article-description">Anonymous VPN with cash payments</p>
+      <div class="read-more">
+        Visit Mullvad
+        <svg width="100%" height="100%" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M24 12.3671L17.6203 7V11.3291H0V13.4304H17.6203V17.7089L24 12.3671Z"/>
+        </svg>
+      </div>
+    </div>
+  </a>
+
+  <a href="https://protonvpn.com" target="_blank" class="article-item">
+    <img src="https://www.privacyguides.org/en/assets/img/vpn/protonvpn.svg" alt="Proton VPN logo" class="article-image">
+    <div class="article-content">
+      <div class="article-meta">
+        <div class="article-category">Paid</div>
+      </div>
+      <h2 class="article-title">Proton VPN</h2>
+      <p class="article-description">Secure VPN with no-logs policy</p>
+      <div class="read-more">
+        Visit Proton VPN
+        <svg width="100%" height="100%" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M24 12.3671L17.6203 7V11.3291H0V13.4304H17.6203V17.7089L24 12.3671Z"/>
+        </svg>
+      </div>
+    </div>
+  </a>
+</div>
+
+<h3 style="color: var(--_theme---hero-h1, #ffffff); font-size: 1.2rem; margin-top: 2rem; margin-bottom: 1rem;">Mixnet</h3>
+
+<div class="cards-grid">
+  <a href="https://nym.com" target="_blank" class="article-item">
+    <img src="https://nym.com/_next/image?url=https%3A%2F%2Fassets.nym.com%2FLayer_1_ca673a606c.svg&w=3840&q=80" alt="NYM logo" class="article-image">
+    <div class="article-content">
+      <div class="article-meta">
+        <div class="article-category">Paid</div>
+        <div class="article-category">Web3</div>
+      </div>
+      <h2 class="article-title">NYM</h2>
+      <p class="article-description">Decentralized privacy network</p>
+      <div class="read-more">
+        Visit NYM
+        <svg width="100%" height="100%" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M24 12.3671L17.6203 7V11.3291H0V13.4304H17.6203V17.7089L24 12.3671Z"/>
+        </svg>
+      </div>
+    </div>
+  </a>
+</div>
 
     <!-- Browser Section -->
     <h2 style="color: var(--_theme---hero-h1, #ffffff); font-size: 2rem; margin-top: 3rem; margin-bottom: 1.5rem;">Browser</h2>
@@ -808,7 +850,9 @@ margin: 0rem !important;
       <a href="https://www.mozilla.org/firefox" target="_blank" class="article-item">
         <img src="https://www.privacyguides.org/en/assets/img/browsers/firefox.svg" alt="Firefox logo" class="article-image">
         <div class="article-content">
-          <div class="article-category">FOSS</div>
+          <div class="article-meta">
+            <div class="article-category">FOSS</div>
+          </div>
           <h2 class="article-title">Firefox</h2>
           <p class="article-description">Open-source privacy-focused browser</p>
           <div class="read-more">
@@ -823,8 +867,10 @@ margin: 0rem !important;
       <a href="https://brave.com" target="_blank" class="article-item">
         <img src="https://www.privacyguides.org/en/assets/img/browsers/brave.svg" alt="Brave logo" class="article-image">
         <div class="article-content">
-          <div class="article-category">FOSS</div>
-          <div class="article-category">Chrome-Fork</div>
+          <div class="article-meta">
+            <div class="article-category">FOSS</div>
+            <div class="article-category">Chrome-Fork</div>
+          </div>
           <h2 class="article-title">Brave</h2>
           <p class="article-description">Privacy browser with built-in ad blocking</p>
           <div class="read-more">
@@ -839,8 +885,10 @@ margin: 0rem !important;
       <a href="https://www.torproject.org" target="_blank" class="article-item">
         <img src="https://www.privacyguides.org/en/assets/img/browsers/tor.svg" alt="Tor logo" class="article-image">
         <div class="article-content">
-          <div class="article-category">FOSS</div>
-          <div class="article-category">Firefox-Fork</div>
+          <div class="article-meta">
+            <div class="article-category">FOSS</div>
+            <div class="article-category">Firefox-Fork</div>
+          </div>
           <h2 class="article-title">Tor Browser</h2>
           <p class="article-description">Anonymous browsing with onion routing</p>
           <div class="read-more">
@@ -859,8 +907,10 @@ margin: 0rem !important;
       <a href="https://ublockorigin.com" target="_blank" class="article-item">
         <img src="https://www.privacyguides.org/en/assets/img/browsers/ublock_origin.svg" alt="UBlock Origin logo" class="article-image">
         <div class="article-content">
-          <div class="article-category">FOSS</div>
-          <div class="article-category">Not needed for browsers like Brave, Tor, etc.</div>
+          <div class="article-meta">
+            <div class="article-category">FOSS</div>
+            <div class="article-category">For lacking browsers</div>
+          </div>
           <h2 class="article-title">UBlock Origin & Lite</h2>
           <p class="article-description">Efficient ad and tracker blocker</p>
           <div class="read-more">
@@ -880,8 +930,9 @@ margin: 0rem !important;
       <a href="https://duckduckgo.com" target="_blank" class="article-item">
         <img src="https://www.privacyguides.org/en/assets/img/search-engines/duckduckgo.svg" alt="DuckDuckGo logo" class="article-image">
         <div class="article-content">
-          <div class="article-category">Proprietary</div>
-          <div class="article-category">Free</div>
+          <div class="article-meta">
+            <div class="article-category">FOSS</div>
+          </div>
           <h2 class="article-title">DuckDuckGo</h2>
           <p class="article-description">Private search engine</p>
           <div class="read-more">
@@ -896,7 +947,9 @@ margin: 0rem !important;
       <a href="https://searxng.org" target="_blank" class="article-item">
         <img src="https://www.privacyguides.org/en/assets/img/search-engines/searxng.svg" alt="SearXNG logo" class="article-image">
         <div class="article-content">
-          <div class="article-category">FOSS</div>
+          <div class="article-meta">
+            <div class="article-category">FOSS</div>
+          </div>
           <h2 class="article-title">SearXNG</h2>
           <p class="article-description">Privacy-respecting metasearch engine</p>
           <div class="read-more">
@@ -916,8 +969,9 @@ margin: 0rem !important;
       <a href="https://obsidian.md" target="_blank" class="article-item">
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/2023_Obsidian_logo.svg/250px-2023_Obsidian_logo.svg.png" alt="Obsidian logo" class="article-image">
         <div class="article-content">
-          <div class="article-category">Proprietary</div>
-          <div class="article-category">Freemium</div>
+          <div class="article-meta">
+            <div class="article-category">Freemium</div>
+          </div>
           <h2 class="article-title">Obsidian</h2>
           <p class="article-description">Local-first knowledge base</p>
           <div class="read-more">
@@ -932,7 +986,9 @@ margin: 0rem !important;
       <a href="https://notesnook.com" target="_blank" class="article-item">
         <img src="https://www.privacyguides.org/en/assets/img/notebooks/notesnook.svg" alt="Notesnook logo" class="article-image">
         <div class="article-content">
-          <div class="article-category">FOSS</div>
+          <div class="article-meta">
+            <div class="article-category">FOSS</div>
+          </div>
           <h2 class="article-title">Notesnook</h2>
           <p class="article-description">End-to-end encrypted notes</p>
           <div class="read-more">
@@ -947,8 +1003,10 @@ margin: 0rem !important;
       <a href="https://anytype.io" target="_blank" class="article-item">
         <img src="https://www.fahimai.com/wp-content/uploads/2025/01/CTA-12-480x480.png" alt="AnyType logo" class="article-image">
         <div class="article-content">
-          <div class="article-category">FOSS</div>
-          <div class="article-category">Notion-like</div>
+          <div class="article-meta">
+            <div class="article-category">FOSS</div>
+            <div class="article-category">Notion-like</div>
+          </div>
           <h2 class="article-title">AnyType</h2>
           <p class="article-description">Local-first, P2P knowledge graph</p>
           <div class="read-more">
@@ -968,7 +1026,9 @@ margin: 0rem !important;
       <a href="https://cryptpad.fr" target="_blank" class="article-item">
         <img src="https://www.privacyguides.org/en/assets/img/document-collaboration/cryptpad.svg" alt="CryptPad logo" class="article-image">
         <div class="article-content">
-          <div class="article-category">FOSS</div>
+          <div class="article-meta">
+            <div class="article-category">FOSS</div>
+          </div>
           <h2 class="article-title">CryptPad</h2>
           <p class="article-description">Encrypted collaborative documents</p>
           <div class="read-more">
@@ -983,7 +1043,10 @@ margin: 0rem !important;
       <a href="https://fileverse.io" target="_blank" class="article-item">
         <img src="https://fileverse.io/assets/fileverse-logo.svg" alt="Fileverse logo" class="article-image">
         <div class="article-content">
-          <div class="article-category">Web3</div>
+          <div class="article-meta">
+            <div class="article-category">FOSS</div>
+            <div class="article-category">Web3</div>
+          </div>
           <h2 class="article-title">Fileverse</h2>
           <p class="article-description">Decentralized file collaboration</p>
           <div class="read-more">
@@ -1003,8 +1066,9 @@ margin: 0rem !important;
       <a href="https://internxt.com" target="_blank" class="article-item">
         <img src="https://www.privacytools.io/img/apps/internxt.png" alt="Internxt logo" class="article-image">
         <div class="article-content">
-          <div class="article-category">FOSS</div>
-          <div class="article-category">Freemium</div>
+          <div class="article-meta">
+            <div class="article-category">Freemium</div>
+          </div>
           <h2 class="article-title">Internxt</h2>
           <p class="article-description">Zero-knowledge cloud storage</p>
           <div class="read-more">
@@ -1019,8 +1083,9 @@ margin: 0rem !important;
       <a href="https://filen.io" target="_blank" class="article-item">
         <img src="https://www.privacytools.io/img/apps/filen.svg" alt="Filen logo" class="article-image">
         <div class="article-content">
-          <div class="article-category">Proprietary</div>
-          <div class="article-category">Paid</div>
+          <div class="article-meta">
+            <div class="article-category">Paid</div>
+          </div>
           <h2 class="article-title">Filen</h2>
           <p class="article-description">End-to-end encrypted cloud</p>
           <div class="read-more">
@@ -1035,8 +1100,9 @@ margin: 0rem !important;
       <a href="https://proton.me/drive" target="_blank" class="article-item">
         <img src="https://www.privacyguides.org/en/assets/img/cloud/protondrive.svg" alt="Proton Drive logo" class="article-image">
         <div class="article-content">
-          <div class="article-category">Proprietary</div>
-          <div class="article-category">Paid</div>
+          <div class="article-meta">
+            <div class="article-category">Paid</div>
+          </div>
           <h2 class="article-title">Proton Drive</h2>
           <p class="article-description">Encrypted cloud storage</p>
           <div class="read-more">
