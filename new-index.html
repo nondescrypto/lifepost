@@ -360,17 +360,20 @@
   .c1{color:var(--paper)} .c1 h3,.c1 .card-art{color:var(--gold)}
   .c3 h3,.c3 .card-art{color:var(--sage)}
   .c4 h3,.c4 .card-art{color:var(--indigo)}
-  /* topics under the blurb: small columns of links into the sub-pages */
-  .topics{position:relative;z-index:2;margin-top:auto;padding-top:22px;width:100%;
-    display:grid;grid-template-columns:1fr 1fr;gap:16px 18px;align-items:start;
+  /* topics under the blurb. Symmetrical: the lead group centred on top, the
+     other two in equal columns mirrored either side of the centre line, and
+     the block starts at the same height on every card. Ordinary: plain
+     sentence-case headings, no small caps or letter-spacing. */
+  .card p{min-height:4.8em}
+  .topics{position:relative;z-index:2;margin-top:28px;width:100%;max-width:300px;
+    display:grid;grid-template-columns:1fr 1fr;gap:18px 0;align-items:start;
     text-shadow:0 1px 10px var(--panel),0 0 4px var(--panel)}
   .topics > .topic:first-child{grid-column:1 / -1}
-  .topic{display:flex;flex-direction:column;align-items:center;gap:3px}
-  .topic a{color:var(--paper);opacity:.8;text-decoration:none;font-size:.86rem;
+  .topic{display:flex;flex-direction:column;align-items:center;gap:2px;padding:0 6px}
+  .topic a{color:var(--paper);opacity:.8;text-decoration:none;font-size:.88rem;line-height:1.45;
     border-bottom:1px solid transparent;transition:opacity .2s,border-color .2s}
   .topic a:hover,.topic a:focus-visible{opacity:1;border-color:currentColor}
-  .topic .topic-head{font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;
-    opacity:1;margin-bottom:4px}
+  .topic .topic-head{font-family:var(--serif);font-size:1.05rem;opacity:1;margin-bottom:3px}
   .c1 .topic-head{color:var(--gold)} .c3 .topic-head{color:var(--sage)} .c4 .topic-head{color:var(--indigo)}
 
   /* "The Work" heading, centred, with an ornament beneath it that the
