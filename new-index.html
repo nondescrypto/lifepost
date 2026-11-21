@@ -362,9 +362,9 @@
   .c4 h3,.c4 .card-art{color:var(--indigo)}
   /* topics under the blurb: small columns of links into the sub-pages */
   .topics{position:relative;z-index:2;margin-top:auto;padding-top:22px;width:100%;
-    display:grid;grid-template-columns:1fr 1fr;gap:0 18px;align-items:start;
+    display:grid;grid-template-columns:1fr 1fr;gap:16px 18px;align-items:start;
     text-shadow:0 1px 10px var(--panel),0 0 4px var(--panel)}
-  .topic-col{display:flex;flex-direction:column;gap:16px}
+  .topics > .topic:first-child{grid-column:1 / -1}
   .topic{display:flex;flex-direction:column;align-items:center;gap:3px}
   .topic a{color:var(--paper);opacity:.8;text-decoration:none;font-size:.86rem;
     border-bottom:1px solid transparent;transition:opacity .2s,border-color .2s}
@@ -794,24 +794,20 @@
         <h3><a class="card-link" href="self-work.html">Self Work</a></h3>
         <p>Health &amp; wellness — tending the mind, the body, and the path you're on.</p>
         <nav class="topics" aria-label="Self Work topics">
-          <div class="topic-col">
-            <div class="topic">
-              <a class="topic-head" href="self-work/mind.html">Mind</a>
-              <a href="self-work/mind.html#meditation">Meditation</a>
-            </div>
-            <div class="topic">
-              <a class="topic-head" href="self-work/body.html">Body</a>
-              <a href="self-work/body.html#ayurveda">Ayurveda</a>
-              <a href="self-work/body.html#chinese-herbs">Chinese herbs</a>
-            </div>
+          <div class="topic">
+            <a class="topic-head" href="self-work/mind.html">Mind</a>
+            <a href="self-work/mind.html#meditation">Meditation</a>
           </div>
-          <div class="topic-col">
-            <div class="topic">
-              <a class="topic-head" href="self-work/path.html">Path</a>
-              <a href="self-work/path.html#astrology">Astrology</a>
-              <a href="self-work/path.html#human-design">Human Design</a>
-              <a href="self-work/path.html#enneagram">Enneagram</a>
-            </div>
+          <div class="topic">
+            <a class="topic-head" href="self-work/body.html">Body</a>
+            <a href="self-work/body.html#ayurveda">Ayurveda</a>
+            <a href="self-work/body.html#chinese-herbs">Chinese herbs</a>
+          </div>
+          <div class="topic">
+            <a class="topic-head" href="self-work/path.html">Path</a>
+            <a href="self-work/path.html#astrology">Astrology</a>
+            <a href="self-work/path.html#human-design">Human Design</a>
+            <a href="self-work/path.html#enneagram">Enneagram</a>
           </div>
         </nav>
       </article>
@@ -823,24 +819,20 @@
         <h3><a class="card-link" href="home-work.html">Home Work</a></h3>
         <p>Home &amp; land — building, permaculture, and conscious use of technology and resources where you live.</p>
         <nav class="topics" aria-label="Home Work topics">
-          <div class="topic-col">
-            <div class="topic">
-              <a class="topic-head" href="home-work/land.html">Land</a>
-              <a href="home-work/land.html#permaculture-design">Permaculture Design</a>
-              <a href="home-work/land.html#forest-regeneration">Forest Regeneration</a>
-            </div>
-            <div class="topic">
-              <a class="topic-head" href="home-work/shelter.html">Shelter</a>
-              <a href="home-work/shelter.html#tiny-home-architecture">Tiny Home Architecture</a>
-              <a href="home-work/shelter.html#mobile-home-creations">Mobile Home Creations</a>
-            </div>
+          <div class="topic">
+            <a class="topic-head" href="home-work/energy.html">Energy</a>
+            <a href="home-work/energy.html#water-conservation">Water Conservation</a>
+            <a href="home-work/energy.html#energy-sovereignty">Energy Sovereignty</a>
           </div>
-          <div class="topic-col">
-            <div class="topic">
-              <a class="topic-head" href="home-work/energy.html">Energy</a>
-              <a href="home-work/energy.html#water-conservation">Water Conservation</a>
-              <a href="home-work/energy.html#energy-sovereignty">Energy Sovereignty</a>
-            </div>
+          <div class="topic">
+            <a class="topic-head" href="home-work/land.html">Land</a>
+            <a href="home-work/land.html#permaculture-design">Permaculture Design</a>
+            <a href="home-work/land.html#forest-regeneration">Forest Regeneration</a>
+          </div>
+          <div class="topic">
+            <a class="topic-head" href="home-work/shelter.html">Shelter</a>
+            <a href="home-work/shelter.html#tiny-home-architecture">Tiny Home Architecture</a>
+            <a href="home-work/shelter.html#mobile-home-creations">Mobile Home Creations</a>
           </div>
         </nav>
       </article>
@@ -863,24 +855,20 @@
         <h3><a class="card-link" href="world-work.html">World Work</a></h3>
         <p>Trading, markets &amp; the wider picture — how markets, technology and resources are reshaping the world.</p>
         <nav class="topics" aria-label="World Work topics">
-          <div class="topic-col">
-            <div class="topic">
-              <a class="topic-head" href="world-work/community.html">Community</a>
-              <a href="world-work/community.html#village-networks">Village Networks</a>
-              <a href="world-work/community.html#parallel-systems">Parallel Systems</a>
-            </div>
-            <div class="topic">
-              <a class="topic-head" href="world-work/technology.html">Technology</a>
-              <a href="world-work/technology.html#blockchain-technology">Blockchain Technology</a>
-              <a href="world-work/technology.html#artificial-intelligence">Artificial Intelligence</a>
-            </div>
+          <div class="topic">
+            <a class="topic-head" href="world-work/community.html">Community</a>
+            <a href="world-work/community.html#village-networks">Village Networks</a>
+            <a href="world-work/community.html#parallel-systems">Parallel Systems</a>
           </div>
-          <div class="topic-col">
-            <div class="topic">
-              <a class="topic-head" href="world-work/exchange.html">Exchange</a>
-              <a href="world-work/exchange.html#circular-economies">Circular Economies</a>
-              <a href="world-work/exchange.html#markets-trading">Markets &amp; Trading</a>
-            </div>
+          <div class="topic">
+            <a class="topic-head" href="world-work/technology.html">Technology</a>
+            <a href="world-work/technology.html#blockchain-technology">Blockchain Technology</a>
+            <a href="world-work/technology.html#artificial-intelligence">Artificial Intelligence</a>
+          </div>
+          <div class="topic">
+            <a class="topic-head" href="world-work/exchange.html">Exchange</a>
+            <a href="world-work/exchange.html#circular-economies">Circular Economies</a>
+            <a href="world-work/exchange.html#markets-trading">Markets &amp; Trading</a>
           </div>
         </nav>
       </article>
