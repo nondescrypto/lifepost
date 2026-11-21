@@ -362,9 +362,10 @@
   .c4 h3,.c4 .card-art{color:var(--indigo)}
   /* topics under the blurb: small columns of links into the sub-pages */
   .topics{position:relative;z-index:2;margin-top:auto;padding-top:22px;width:100%;
-    display:flex;justify-content:center;gap:18px 26px;flex-wrap:wrap;
+    display:grid;grid-template-columns:1fr 1fr;gap:0 18px;align-items:start;
     text-shadow:0 1px 10px var(--panel),0 0 4px var(--panel)}
-  .topic{display:flex;flex-direction:column;align-items:center;gap:3px;min-width:5.5em}
+  .topic-col{display:flex;flex-direction:column;gap:16px}
+  .topic{display:flex;flex-direction:column;align-items:center;gap:3px}
   .topic a{color:var(--paper);opacity:.8;text-decoration:none;font-size:.86rem;
     border-bottom:1px solid transparent;transition:opacity .2s,border-color .2s}
   .topic a:hover,.topic a:focus-visible{opacity:1;border-color:currentColor}
@@ -793,19 +794,24 @@
         <h3><a class="card-link" href="self-work.html">Self Work</a></h3>
         <p>Health &amp; wellness — tending the mind, the body, and the path you're on.</p>
         <nav class="topics" aria-label="Self Work topics">
-          <div class="topic">
-            <a class="topic-head" href="self-work/mind.html">Mind</a>
-            <a href="self-work/mind.html#meditation">Meditation</a>
+          <div class="topic-col">
+            <div class="topic">
+              <a class="topic-head" href="self-work/mind.html">Mind</a>
+              <a href="self-work/mind.html#meditation">Meditation</a>
+            </div>
+            <div class="topic">
+              <a class="topic-head" href="self-work/body.html">Body</a>
+              <a href="self-work/body.html#ayurveda">Ayurveda</a>
+              <a href="self-work/body.html#chinese-herbs">Chinese herbs</a>
+            </div>
           </div>
-          <div class="topic">
-            <a class="topic-head" href="self-work/body.html">Body</a>
-            <a href="self-work/body.html#ayurveda">Ayurveda</a>
-            <a href="self-work/body.html#chinese-herbs">Chinese herbs</a>
-          </div>
-          <div class="topic">
-            <a class="topic-head" href="self-work/path.html">Path</a>
-            <a href="self-work/path.html#astrology">Astrology</a>
-            <a href="self-work/path.html#human-design">Human Design</a>
+          <div class="topic-col">
+            <div class="topic">
+              <a class="topic-head" href="self-work/path.html">Path</a>
+              <a href="self-work/path.html#astrology">Astrology</a>
+              <a href="self-work/path.html#human-design">Human Design</a>
+              <a href="self-work/path.html#enneagram">Enneagram</a>
+            </div>
           </div>
         </nav>
       </article>
