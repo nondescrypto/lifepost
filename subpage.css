@@ -1,0 +1,55 @@
+/* Shared styles for the sub-pages (self-work.html, home-work.html,
+   world-work.html and the topic pages nested under them). Matches the
+   dark line-art look of new-index.html. Set the accent per sphere with a
+   class on <body>: .self (gold), .home (sage), .world (indigo). */
+:root{
+  --black:#0a0a0b; --panel:#111113; --line:#f2efe9; --paper:#e9e3d6;
+  --gold:#d1a24e; --sage:#7c9a6a; --indigo:#5566a0; --clay:#a4522f;
+  --hair:rgba(242,239,233,.14);
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  --sans:ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --accent:var(--gold);
+}
+body.self{--accent:var(--gold)}
+body.home{--accent:var(--sage)}
+body.world{--accent:var(--indigo)}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--black);color:var(--paper);font-family:var(--sans);
+  line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:880px;margin:0 auto;padding:0 24px}
+
+/* breadcrumb */
+.crumbs{padding:28px 0 0;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase}
+.crumbs a{text-decoration:none;opacity:.6;transition:opacity .2s}
+.crumbs a:hover{opacity:1}
+.crumbs span{opacity:.35;margin:0 .6em}
+
+/* page header */
+.page-head{padding:72px 0 40px;text-align:center}
+.page-head h1{font-family:var(--serif);font-weight:500;color:var(--accent);
+  font-size:clamp(2.6rem,8vw,4.6rem);line-height:1.02;margin:0}
+.page-head .lede{font-family:var(--serif);font-style:italic;font-size:clamp(1.05rem,2.4vw,1.3rem);
+  max-width:40ch;margin:18px auto 0;opacity:.88}
+.page-head::after{content:"";display:block;width:64px;height:1px;margin:36px auto 0;
+  background:var(--accent);opacity:.7}
+
+/* sections: topic groups on a sphere page, or subtopics on a topic page */
+.sections{display:grid;gap:20px;padding:8px 0 72px}
+.sections.cols{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.section{border:1px solid var(--hair);background:var(--panel);padding:26px 24px 28px}
+.section h2{font-family:var(--serif);font-weight:500;font-size:1.5rem;margin:0 0 8px;color:var(--accent)}
+.section h2 a{text-decoration:none}
+.section h2 a:hover{text-decoration:underline;text-underline-offset:4px}
+.section p{margin:0 0 14px;opacity:.85}
+.section ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px 18px}
+.section li a{text-decoration:none;border-bottom:1px solid var(--hair);transition:border-color .2s}
+.section li a:hover{border-color:var(--accent)}
+.section:target{border-color:var(--accent)}
+.soon{display:inline-block;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--accent);opacity:.8;margin-top:6px}
+
+footer{border-top:1px solid var(--hair);padding:32px 0 56px;font-size:.82rem;opacity:.6}
+footer a{text-decoration:none}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
