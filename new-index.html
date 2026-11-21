@@ -379,7 +379,18 @@
   .ornament.s1 .orn-line{mask:none}
   .ornament.s2 .orn-leaf.l2,.orn-leaf.fed{opacity:.9;transform:scale(1) rotate(0)}
   .ornament.s3 .orn-vine,.orn-vine.fed{opacity:1;stroke-dashoffset:0}
-  .ornament.s4 .orn-flower,.orn-flower.fed{opacity:1;transform:scale(1) rotate(0)}
+  .ornament.s4 .orn-flower[data-bloom],.ornament.s5 .orn-flower,.orn-flower.fed{opacity:1;transform:scale(1) rotate(0)}
+  /* stage 4: each vine reaches out one more curl -- the upper ones up to
+     grab a letter of "The Work", the lower ones down to rest on a card.
+     These are built by script once the page is laid out. */
+  .orn-ext{fill:none;stroke:var(--sage);stroke-width:1.1;stroke-linecap:round;
+    stroke-dasharray:1 1;stroke-dashoffset:1;opacity:0;
+    transition:stroke-dashoffset 2.8s cubic-bezier(.4,0,.2,1),opacity .2s}
+  .orn-ext.fed{opacity:1;stroke-dashoffset:0}
+  /* stage 6: the whole thing crumbles to dust, then quietly resets */
+  .ornament{transition:opacity 1.5s ease,filter 1.5s ease}
+  .ornament.dissolve{opacity:0;filter:blur(1.5px)}
+  .ornament.resetting,.ornament.resetting *{transition:none !important}
   /* the central bud (face-on): small with the leaves, fuller with the
      vines, and it gives way to the big flower when that blooms. Selectors
      are all .ornament + 2 classes so later stages win by order. */
@@ -869,17 +880,27 @@
     addEventListener('resize',place);
   })();
   /* Each time the crystal shatters, a stream of its dust flies down the page
-     into the ornament under "The Work", which then grows one stage:
-     1 underline, 2 leaves, 3 vines, 4 flowers. Synced to the hero's 9s clock
-     by reading the drop's own CSS animation. */
+     into the ornament under "The Work", which grows one stage per shatter:
+       1 underline (built from the flakes themselves)
+       2 leaves along the line + a small bud in the centre
+       3 vines off every leaf + the bud swells
+       4 the central flower opens; every vine reaches one more curl -- the
+         upper ones up to grab a letter of "The Work", the lower ones down
+         to rest on a card
+       5 flowers bloom along all the vines
+       6 everything crumbles to dust and the cycle starts again
+     Synced to the hero's 9s clock by reading the drop's own CSS animation. */
   (function(){
     var orn=document.getElementById('ornament');
     var drop=document.querySelector('.droplet');
-    if(!orn||!drop) return;
+    var title=document.getElementById('worlds-title');
+    if(!orn||!drop||!title) return;
     if(matchMedia('(prefers-reduced-motion: reduce)').matches){
-      orn.classList.add('s1','s2','s3','s4'); return;
+      orn.classList.add('s1','s2','s3','s4','s5'); return;
     }
-    var CYCLE=9000, SHATTER=0.84*CYCLE, stage=0;
+    var NS='http://www.w3.org/2000/svg';
+    var CYCLE=9000, SHATTER=0.84*CYCLE, stage=0, ext=[];
+    var VB_Y=-26, VB_W=400;                       // ornament viewBox origin / width
     var layer=document.createElement('div'); layer.className='feed-layer';
     document.body.appendChild(layer);
 
@@ -887,68 +908,184 @@
       var r=el.getBoundingClientRect();
       return {x:r.left+scrollX, y:r.top+scrollY, w:r.width, h:r.height};
     }
+    // client (viewport) coords -> ornament user coords, and back to page coords
+    function toOrn(cx,cy){ var r=orn.getBoundingClientRect(), k=r.width/VB_W; return [(cx-r.left)/k,(cy-r.top)/k+VB_Y]; }
+    function ornToPage(x,y){ var o=pageRect(orn), k=o.w/VB_W; return [o.x+x*k, o.y+(y-VB_Y)*k]; }
+    function vineTip(v){
+      var q=v.getPointAtLength(v.getTotalLength());
+      var m=orn.getScreenCTM().inverse().multiply(v.getScreenCTM());
+      return [m.a*q.x+m.c*q.y+m.e, m.b*q.x+m.d*q.y+m.f];
+    }
+    function letterPoints(){                      // a point on the lower part of each letter
+      var tn=title.firstChild, txt=tn.textContent, out=[], rg=document.createRange();
+      for(var i=0;i<txt.length;i++){
+        if(!txt[i].trim()) continue;
+        rg.setStart(tn,i); rg.setEnd(tn,i+1);
+        var r=rg.getBoundingClientRect();
+        out.push(toOrn(r.left+r.width/2, r.bottom-r.height*.3));
+      }
+      return out;
+    }
+    function el(tag,attrs){ var e=document.createElementNS(NS,tag); for(var k in attrs) e.setAttribute(k,attrs[k]); return e; }
+    function flowerEl(cx,cy,r){
+      var g=el('g',{'class':'orn-flower ext','data-x':cx.toFixed(1),'data-y':cy.toFixed(1)});
+      for(var a=0;a<360;a+=72){
+        var px=cx+5.2*r*Math.cos((a-90)*Math.PI/180), py=cy+5.2*r*Math.sin((a-90)*Math.PI/180);
+        g.appendChild(el('ellipse',{'class':'petal',cx:px.toFixed(2),cy:py.toFixed(2),rx:(3.2*r).toFixed(2),ry:(4.6*r).toFixed(2),transform:'rotate('+a+' '+px.toFixed(2)+' '+py.toFixed(2)+')'}));
+      }
+      g.appendChild(el('circle',{'class':'heart',cx:cx.toFixed(1),cy:cy.toFixed(1),r:(2.4*r).toFixed(2)}));
+      return g;
+    }
+    function f(n){return n.toFixed(1)}
+
+    // build (or rebuild) the stage-4 reaches from the current layout
+    function buildExt(){
+      ext.forEach(function(e){e.remove()}); ext=[];
+      var tips=[].slice.call(orn.querySelectorAll('.orn-vine')).map(vineTip);
+      var up=tips.filter(function(t){return t[1]<30}).sort(function(a,b){return a[0]-b[0]});
+      var down=tips.filter(function(t){return t[1]>=30}).sort(function(a,b){return a[0]-b[0]});
+      var letters=letterPoints();
+      var cards=[].slice.call(document.querySelectorAll('.grid .card')).map(function(c){return c.getBoundingClientRect()});
+      var firstRow=cards.length?Math.min.apply(null,cards.map(function(c){return c.top})):0;
+      cards=cards.filter(function(c){return c.top-firstRow<4});
+      var ornR=orn.getBoundingClientRect(), k=ornR.width/VB_W;
+
+      up.forEach(function(t,i){                 // climb up and coil around a letter
+        var L=letters[Math.round(i*(letters.length-1)/Math.max(1,up.length-1))];
+        if(!L) return;
+        var x0=t[0],y0=t[1],lx=L[0],ly=L[1],dy=y0-ly;
+        var d='M'+f(x0)+','+f(y0)+' C'+f(x0)+','+f(y0-dy*.45)+' '+f(lx+(x0-lx)*.3)+','+f(ly+dy*.35)+' '+f(lx)+','+f(ly)
+             +' C'+f(lx+6)+','+f(ly-2)+' '+f(lx+6)+','+f(ly-10)+' '+f(lx)+','+f(ly-10)
+             +' C'+f(lx-6)+','+f(ly-10)+' '+f(lx-6)+','+f(ly-3)+' '+f(lx-1)+','+f(ly-3);
+        add(d,x0,y0,lx+7,ly-12);
+      });
+      down.forEach(function(t,i){               // fall and come to rest on a card
+        var x0=t[0],y0=t[1], cx=ornR.left+x0*k, best=null,bd=1e9;
+        cards.forEach(function(c){ var dd=cx<c.left?c.left-cx:(cx>c.right?cx-c.right:0); if(dd<bd){bd=dd;best=c;} });
+        if(!best) return;
+        var tx=toOrn(Math.min(Math.max(cx,best.left+24),best.right-24),0)[0];
+        var ty=toOrn(0,best.top)[1]+1, s=i%2?1:-1, dy=ty-y0;
+        var d='M'+f(x0)+','+f(y0)+' C'+f(x0+10*s)+','+f(y0+dy*.4)+' '+f(tx-12*s)+','+f(ty-dy*.3)+' '+f(tx)+','+f(ty)
+             +' C'+f(tx+5)+','+f(ty+4)+' '+f(tx+11)+','+f(ty+1)+' '+f(tx+10)+','+f(ty-4)
+             +' C'+f(tx+9)+','+f(ty-8)+' '+f(tx+4)+','+f(ty-7)+' '+f(tx+5)+','+f(ty-4);
+        add(d,x0,y0,tx+7,ty-5);
+      });
+      function add(d,x0,y0,fx,fy){
+        var p=el('path',{'class':'orn-ext',pathLength:'1',d:d,'data-x':f(x0),'data-y':f(y0)});
+        p.style.transitionDelay=(Math.random()*.4).toFixed(2)+'s';
+        orn.appendChild(p); ext.push(p);
+        var fl=flowerEl(fx,fy,.6); orn.appendChild(fl); ext.push(fl);
+      }
+    }
+    // keep the reaches attached to the letters/cards if the layout changes
+    var rz; addEventListener('resize',function(){
+      if(stage<4||!ext.length) return;
+      clearTimeout(rz); rz=setTimeout(function(){
+        orn.classList.add('resetting'); buildExt();
+        ext.forEach(function(e){ if(e.tagName==='path'||stage>=5) e.classList.add('fed'); });
+        void orn.getBoundingClientRect(); orn.classList.remove('resetting');
+      },150);
+    });
+
+    function fly(tx,ty,x0,y0,onland){             // one mote, page coords
+      var c1x=x0+(Math.random()-.5)*220, c1y=y0+(ty-y0)*.35;
+      var c2x=tx+(Math.random()-.5)*160, c2y=ty-(ty-y0)*.25, frames=[];
+      for(var k=0;k<=12;k++){
+        var u=k/12, a=(1-u)*(1-u)*(1-u), b=3*(1-u)*(1-u)*u, c=3*(1-u)*u*u, d=u*u*u;
+        frames.push({transform:'translate('+(a*x0+b*c1x+c*c2x+d*tx)+'px,'+(a*y0+b*c1y+c*c2y+d*ty)+'px)',
+                     opacity: u<.08? u/.08 : (u>.92? (1-u)/.08 : .95)});
+      }
+      var m=document.createElement('div'); m.className='mote'; layer.appendChild(m);
+      m.animate(frames,{duration:2200+Math.random()*900,delay:Math.random()*500,
+                        easing:'cubic-bezier(.45,0,.55,1)',fill:'forwards'})
+       .onfinish=function(){ m.remove(); onland(); };
+    }
+
     function feed(){
-      if(stage>=4) return;
-      var next=stage+1, src=pageRect(drop), o=pageRect(orn);
+      var next=stage+1, src=pageRect(drop);
       var sx=src.x+src.w/2, sy=src.y+src.h/2;
-      var pts=[], n=16, landed=0;
+      var pts=[], els=null, n=16, landed=0;
       if(next===1){                       // spread the flakes evenly along the line itself
         var line=document.getElementById('orn-line'), L=line.getTotalLength();
-        pts=[]; for(var j=0;j<n;j++){
-          var q=line.getPointAtLength(L*(j+.5)/n+(Math.random()-.5)*L*.02); pts.push([q.x,q.y]);
-        }
-        pts.sort(function(){return Math.random()-.5});   // land in a scattered order
-      }
-      var els=null;
-      var sel={2:'.orn-leaf.l2,.orn-bud',3:'.orn-vine,.orn-bud',4:'.orn-flower'}[next];
-      if(sel){                            // one flake per leaf / vine / flower
-        els=[].slice.call(orn.querySelectorAll(sel));
-        els.sort(function(){return Math.random()-.5});
+        for(var j=0;j<n;j++){ var q=line.getPointAtLength(L*(j+.5)/n+(Math.random()-.5)*L*.02); pts.push([q.x,q.y]); }
+        pts.sort(function(){return Math.random()-.5});
+      } else {
+        if(next===4) buildExt();
+        var sel={2:'.orn-leaf.l2,.orn-bud',3:'.orn-vine,.orn-bud',
+                 4:'.orn-flower[data-bloom],.orn-ext',5:'.orn-flower:not([data-bloom])',
+                 6:'.orn-flower[data-bloom]'}[next];
+        els=[].slice.call(orn.querySelectorAll(sel)).sort(function(){return Math.random()-.5});
+        if(next===6) els=[els[0],els[0],els[0],els[0],els[0],els[0],els[0],els[0],els[0],els[0]];
         n=els.length;
         pts=els.map(function(e){return [+e.dataset.x,+e.dataset.y];});
       }
-      for(var i=0;i<n;i++){
-        var t=pts[i%pts.length];
-        var tx=o.x+t[0]/400*o.w, ty=o.y+(t[1]+26)/116*o.h;
-        var x0=sx+(Math.random()-.5)*30, y0=sy+(Math.random()-.5)*30;
-        // a lazy S-curve: drift sideways first, then sweep down onto the target
-        var c1x=x0+(Math.random()-.5)*220, c1y=y0+(ty-y0)*.35;
-        var c2x=tx+(Math.random()-.5)*160, c2y=ty-(ty-y0)*.25;
-        var frames=[];
-        for(var k=0;k<=12;k++){
-          var u=k/12, a=(1-u)*(1-u)*(1-u), b=3*(1-u)*(1-u)*u, c=3*(1-u)*u*u, d=u*u*u;
-          var x=a*x0+b*c1x+c*c2x+d*tx, y=a*y0+b*c1y+c*c2y+d*ty;
-          frames.push({transform:'translate('+x+'px,'+y+'px)',
-                       opacity: u<.08? u/.08 : (u>.92? (1-u)/.08 : .95)});
-        }
-        var m=document.createElement('div'); m.className='mote'; layer.appendChild(m);
-        var anim=m.animate(frames,{duration:2200+Math.random()*900,delay:Math.random()*500,
-                                   easing:'cubic-bezier(.45,0,.55,1)',fill:'forwards'});
-        anim.onfinish=(function(m,t,piece){return function(){
-          m.remove();
+      pts.forEach(function(t,i){
+        var tp=ornToPage(t[0],t[1]);
+        fly(tp[0],tp[1],sx+(Math.random()-.5)*30,sy+(Math.random()-.5)*30,function(){
+          var piece=els&&els[i];
+          if(next===1){
+            // the flake settles into the line: a patch of it spreads out from where it landed
+            var b=el('ellipse',{'class':'orn-bit',cx:t[0],cy:t[1],rx:340/n*.75,ry:5});
+            document.getElementById('orn-line-bits').appendChild(b);
+            b.animate([{transform:'scale(0,1)'},{transform:'scale(1,1)'}],
+                      {duration:700,easing:'cubic-bezier(.2,.7,.3,1)',fill:'forwards'});
+            if(++landed===n) setTimeout(function(){ stage=1; orn.classList.add('s1'); },800);
+            return;
+          }
+          if(next===6){ if(++landed===n) disintegrate(); return; }
           if(piece){
             piece.classList.add('fed','fed'+next);
             if(piece.dataset.bloom) orn.querySelector('.orn-bud').classList.add('bloomed');
           }
-          if(next===1){
-            // the flake settles into the line: a patch of it spreads out from where it landed
-            var NS='http://www.w3.org/2000/svg', b=document.createElementNS(NS,'ellipse');
-            b.setAttribute('class','orn-bit'); b.setAttribute('cx',t[0]); b.setAttribute('cy',t[1]);
-            b.setAttribute('rx',340/n*.75); b.setAttribute('ry',5);
-            document.getElementById('orn-line-bits').appendChild(b);
-            b.animate([{transform:'scale(0,1)'},{transform:'scale(1,1)'}],
-                      {duration:700,easing:'cubic-bezier(.2,.7,.3,1)',fill:'forwards'});
-            if(++landed===n){ setTimeout(function(){ stage=1; orn.classList.add('s1'); },800); }
-          } else if(++landed===n){ stage=next; orn.classList.add('s'+next); }
-        };})(m,t,els&&els[i]);
-      }
+          if(++landed===n){ stage=next; orn.classList.add('s'+next); }
+        });
+      });
     }
-    // sync to the drop's animation clock
+
+    // stage 6: crumble every grown piece into falling dust, then reset
+    function disintegrate(){
+      stage=6;
+      var pieces=[].slice.call(orn.querySelectorAll('.orn-line,.fed,.orn-bud')), budget=110;
+      var colors=['#ffffff','#e9e3d6','#7c9a6a','#7c9a6a','#d1a24e'];
+      pieces.forEach(function(p){
+        var r=p.getBoundingClientRect(); if(!r.width&&!r.height) return;
+        var count=Math.min(6,Math.max(1,Math.round((r.width+r.height)/30)));
+        for(var i=0;i<count&&budget>0;i++,budget--){
+          var x=r.left+scrollX+Math.random()*r.width, y=r.top+scrollY+Math.random()*r.height;
+          var m=document.createElement('div'); m.className='mote';
+          m.style.background=colors[(Math.random()*colors.length)|0];
+          layer.appendChild(m);
+          var dx=(Math.random()-.5)*80, dy=50+Math.random()*90;
+          m.animate([{transform:'translate('+x+'px,'+y+'px)',opacity:.95},
+                     {transform:'translate('+(x+dx*.4)+'px,'+(y+dy*.3)+'px)',opacity:.8,offset:.4},
+                     {transform:'translate('+(x+dx)+'px,'+(y+dy)+'px)',opacity:0}],
+                    {duration:1400+Math.random()*1000,delay:Math.random()*600,easing:'cubic-bezier(.4,0,.9,.7)',fill:'forwards'})
+           .onfinish=(function(m){return function(){m.remove()}})(m);
+        }
+      });
+      orn.classList.add('dissolve');
+      setTimeout(reset,1800);
+    }
+    function reset(){
+      orn.classList.add('resetting');
+      orn.classList.remove('s1','s2','s3','s4','s5');
+      [].forEach.call(orn.querySelectorAll('.fed,.bloomed'),function(e){
+        e.classList.remove('fed','fed2','fed3','fed4','fed5','bloomed');
+      });
+      var bits=document.getElementById('orn-line-bits'); while(bits.firstChild) bits.firstChild.remove();
+      ext.forEach(function(e){e.remove()}); ext=[];
+      void orn.getBoundingClientRect();
+      orn.classList.remove('dissolve');
+      requestAnimationFrame(function(){ requestAnimationFrame(function(){ orn.classList.remove('resetting'); }); });
+      stage=0;
+    }
+
+    // sync to the drop's animation clock; runs forever (6 stages, then repeat)
     function schedule(){
       var a=drop.getAnimations && drop.getAnimations().find(function(x){return x.animationName==='drip';});
       var now=a&&a.currentTime!=null ? a.currentTime%CYCLE : performance.now()%CYCLE;
       var wait=(SHATTER-now+CYCLE)%CYCLE || CYCLE;
-      setTimeout(function(){ feed(); if(stage<4) setTimeout(schedule,200); }, wait);
+      setTimeout(function(){ if(stage<6) feed(); setTimeout(schedule,200); }, wait);
     }
     schedule();
   })();
