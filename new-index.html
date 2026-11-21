@@ -441,7 +441,8 @@
   .about p{font-family:var(--serif);font-size:1.15rem;max-width:46ch}
   /* Connect: same label style as About, title and links set to the right */
   .contact{text-align:right}
-  .contact h2.section-eyebrow{font-weight:400;margin:0 0 16px}
+  /* match the About label exactly (it picks up .about p's serif 1.15rem) */
+  .contact h2.section-eyebrow{font-family:var(--serif);font-size:1.15rem;font-weight:400;margin:0 0 16px}
   .contact a.link{
     display:inline-block;font-family:var(--sans);letter-spacing:.04em;
     border-bottom:1px solid var(--clay);text-decoration:none;
