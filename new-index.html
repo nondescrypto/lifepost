@@ -435,28 +435,29 @@
     background:#fff;box-shadow:0 0 6px 1px rgba(255,255,255,.8)}
   body{overflow-x:clip}
 
-  /* ---- About / contact ----------------------------------------- */
-  .about{padding:64px 0;border-top:1px solid var(--hair);margin-top:48px}
-  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
-  .about p{font-family:var(--serif);font-size:1.15rem;max-width:46ch}
-  /* Connect: same label style as About, title and links set to the right */
-  .contact{text-align:right}
-  /* match the About label exactly (it picks up .about p's serif 1.15rem) */
-  .contact h2.section-eyebrow{font-family:var(--serif);font-size:1.15rem;font-weight:400;margin:0 0 16px}
-  .contact a.link{
-    display:inline-block;font-family:var(--sans);letter-spacing:.04em;
-    border-bottom:1px solid var(--clay);text-decoration:none;
-    padding-bottom:2px;margin:0 0 10px 18px
-  }
-  .contact a.link:hover{color:var(--clay)}
+  /* ---- Writing ---------------------------------------------------- */
+  .writing{padding:72px 0 24px}
+  .posts{list-style:none;margin:0 auto;padding:0;max-width:640px;border-top:1px solid var(--hair)}
+  .posts li{border-bottom:1px solid var(--hair)}
+  .posts a{display:flex;justify-content:space-between;align-items:baseline;gap:16px;
+    padding:18px 4px;text-decoration:none;font-family:var(--serif);font-size:1.25rem;
+    transition:color .2s,padding .2s}
+  .posts a::after{content:"→";font-family:var(--sans);font-size:.95rem;opacity:.45;transition:opacity .2s}
+  .posts a:hover{color:var(--gold);padding-left:10px}
+  .posts a:hover::after{opacity:1}
 
-  footer{padding:40px 0 60px;border-top:1px solid var(--hair);
-    font-size:.82rem;opacity:.6;letter-spacing:.02em}
+  /* ---- Footer: Connect ----------------------------------------------- */
+  .site-foot{margin-top:72px;padding:44px 24px 60px;border-top:1px solid var(--hair);text-align:left}
+  .foot-label{font-family:var(--serif);font-size:1.15rem;font-weight:400;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--clay);margin:0 0 16px}
+  .foot-links a{display:inline-block;letter-spacing:.04em;text-decoration:none;
+    border-bottom:1px solid var(--clay);padding-bottom:2px;margin:0 18px 10px 0}
+  .foot-links a:hover{color:var(--clay)}
+  .foot-small{margin:28px 0 0;font-size:.82rem;opacity:.55;letter-spacing:.02em}
 
   /* ---- Responsive ---------------------------------------------- */
   @media(max-width:820px){
     .grid{grid-template-columns:1fr}
-    .about-grid{grid-template-columns:1fr;gap:36px}
   }
   @media(prefers-reduced-motion:reduce){
     .hero-art .rise,.sun-core,.ray,.ray-home path,.wave,.shell,.ring,.leaf,
@@ -883,25 +884,28 @@
     </div>
   </section>
 
-  <section class="about wrap">
-    <div class="about-grid">
-      <div>
-        <p class="section-eyebrow">About</p>
-        <p>Pending description</p>
-      </div>
-      <div class="contact">
-        <h2 class="section-eyebrow">Connect</h2>
-        <a class="link" href="mailto:you@example.com">Email</a>
-        <a class="link" href="https://github.com/nondescrypto">GitHub</a>
-        <a class="link" href="#">Instagram</a>
-        <a class="link" href="#">Notes</a>
-      </div>
-    </div>
+  <section class="writing wrap" aria-labelledby="writing-title">
+    <header class="work-head">
+      <h2 class="section-title" id="writing-title">Writing</h2>
+    </header>
+    <ul class="posts">
+      <li><a href="docs/writings/ancestral-future.html">Ancestral Future</a></li>
+      <li><a href="docs/writings/bottom-up.html">Blockchain from the Bottom Up</a></li>
+      <li><a href="docs/writings/digital-twin.html">Making a Digital Twin with RWAs</a></li>
+      <li><a href="docs/writings/manufacturing-care.html">Manufacturing Care</a></li>
+    </ul>
   </section>
 </main>
 
-<footer class="wrap">
-  © 2026 Baba — <a href="#top">back to top</a>
+<footer class="wrap site-foot">
+  <h2 class="foot-label">Connect</h2>
+  <nav class="foot-links" aria-label="Connect">
+    <a href="mailto:you@example.com">Email</a>
+    <a href="https://github.com/nondescrypto">GitHub</a>
+    <a href="#">Instagram</a>
+    <a href="#">Notes</a>
+  </nav>
+  <p class="foot-small">© 2026 Baba — <a href="#top">back to top</a></p>
 </footer>
 
 <script>
