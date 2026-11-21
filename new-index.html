@@ -380,9 +380,8 @@
   .ornament.s2 .orn-leaf.l2,.orn-leaf.fed{opacity:.9;transform:scale(1) rotate(0)}
   .ornament.s3 .orn-vine,.orn-vine.fed{opacity:1;stroke-dashoffset:0}
   .ornament.s4 .orn-flower[data-bloom],.ornament.s5 .orn-flower,.orn-flower.fed{opacity:1;transform:scale(1) rotate(0)}
-  /* stage 4: each vine reaches out one more curl -- the upper ones up to
-     grab a letter of "The Work", the lower ones down to rest on a card.
-     These are built by script once the page is laid out. */
+  /* stage 4: each vine carries on into a second swirl that curls the
+     opposite way, further out from the line */
   .orn-ext{fill:none;stroke:var(--sage);stroke-width:1.1;stroke-linecap:round;
     stroke-dasharray:1 1;stroke-dashoffset:1;opacity:0;
     transition:stroke-dashoffset 2.8s cubic-bezier(.4,0,.2,1),opacity .2s}
@@ -724,20 +723,20 @@
              its tip (stage 3) and a flower in the curl (stage 4). In the middle,
              a bud on a short stem (stage 3) that opens into the big flower
              (stage 4). Each piece grows when its own dust flake lands. -->
-        <g transform="translate(42.1 29.3) rotate(227.3)"><path class="orn-leaf l2" data-x="42.1" data-y="29.3" d="M0,0 Q5.4,-4.8 12,0 Q5.4,4.8 0,0 Z"/><path class="orn-vine" pathLength="1" data-x="34.0" data-y="20.5" d="M12,0 C22,-2 30,2 38,-2 C46,-6 50,-14 48,-20 C46,-26 38,-27 36,-22 C34,-18 38,-15 42,-17"/></g>
-        <g transform="translate(66.4 28.5) rotate(128.9)"><path class="orn-leaf l2" data-x="66.4" data-y="28.5" d="M0,0 Q5.4,-4.8 12,0 Q5.4,4.8 0,0 Z"/><path class="orn-vine" pathLength="1" data-x="58.9" data-y="37.9" d="M12,0 C22,2 30,-2 38,2 C46,6 50,14 48,20 C46,26 38,27 36,22 C34,18 38,15 42,17"/></g>
-        <g transform="translate(90.8 28.3) rotate(229.9)"><path class="orn-leaf l2" data-x="90.8" data-y="28.3" d="M0,0 Q5.4,-4.8 12,0 Q5.4,4.8 0,0 Z"/><path class="orn-vine" pathLength="1" data-x="83.0" data-y="19.1" d="M12,0 C22,-2 30,2 38,-2 C46,-6 50,-14 48,-20 C46,-26 38,-27 36,-22 C34,-18 38,-15 42,-17"/></g>
-        <g transform="translate(115.1 28.4) rotate(130.5)"><path class="orn-leaf l2" data-x="115.1" data-y="28.4" d="M0,0 Q5.4,-4.8 12,0 Q5.4,4.8 0,0 Z"/><path class="orn-vine" pathLength="1" data-x="107.3" data-y="37.5" d="M12,0 C22,2 30,-2 38,2 C46,6 50,14 48,20 C46,26 38,27 36,22 C34,18 38,15 42,17"/></g>
-        <g transform="translate(139.3 28.7) rotate(231.0)"><path class="orn-leaf l2" data-x="139.3" data-y="28.7" d="M0,0 Q5.4,-4.8 12,0 Q5.4,4.8 0,0 Z"/><path class="orn-vine" pathLength="1" data-x="131.7" data-y="19.4" d="M12,0 C22,-2 30,2 38,-2 C46,-6 50,-14 48,-20 C46,-26 38,-27 36,-22 C34,-18 38,-15 42,-17"/></g>
-        <g transform="translate(163.8 29.2) rotate(131.2)"><path class="orn-leaf l2" data-x="163.8" data-y="29.2" d="M0,0 Q5.4,-4.8 12,0 Q5.4,4.8 0,0 Z"/><path class="orn-vine" pathLength="1" data-x="155.8" data-y="38.2" d="M12,0 C22,2 30,-2 38,2 C46,6 50,14 48,20 C46,26 38,27 36,22 C34,18 38,15 42,17"/></g>
-        <g transform="translate(188.0 29.7) rotate(231.4)"><path class="orn-leaf l2" data-x="188.0" data-y="29.7" d="M0,0 Q5.4,-4.8 12,0 Q5.4,4.8 0,0 Z"/><path class="orn-vine" pathLength="1" data-x="180.5" data-y="20.3" d="M12,0 C22,-2 30,2 38,-2 C46,-6 50,-14 48,-20 C46,-26 38,-27 36,-22 C34,-18 38,-15 42,-17"/></g>
-        <g transform="translate(212.2 30.3) rotate(51.4)"><path class="orn-leaf l2" data-x="212.2" data-y="30.3" d="M0,0 Q5.4,-4.8 12,0 Q5.4,4.8 0,0 Z"/><path class="orn-vine" pathLength="1" data-x="219.7" data-y="39.7" d="M12,0 C22,-2 30,2 38,-2 C46,-6 50,-14 48,-20 C46,-26 38,-27 36,-22 C34,-18 38,-15 42,-17"/></g>
-        <g transform="translate(236.4 30.8) rotate(-48.8)"><path class="orn-leaf l2" data-x="236.4" data-y="30.8" d="M0,0 Q5.4,-4.8 12,0 Q5.4,4.8 0,0 Z"/><path class="orn-vine" pathLength="1" data-x="244.3" data-y="21.8" d="M12,0 C22,2 30,-2 38,2 C46,6 50,14 48,20 C46,26 38,27 36,22 C34,18 38,15 42,17"/></g>
-        <g transform="translate(260.9 31.3) rotate(51.0)"><path class="orn-leaf l2" data-x="260.9" data-y="31.3" d="M0,0 Q5.4,-4.8 12,0 Q5.4,4.8 0,0 Z"/><path class="orn-vine" pathLength="1" data-x="268.4" data-y="40.6" d="M12,0 C22,-2 30,2 38,-2 C46,-6 50,-14 48,-20 C46,-26 38,-27 36,-22 C34,-18 38,-15 42,-17"/></g>
-        <g transform="translate(285.1 31.6) rotate(-49.5)"><path class="orn-leaf l2" data-x="285.1" data-y="31.6" d="M0,0 Q5.4,-4.8 12,0 Q5.4,4.8 0,0 Z"/><path class="orn-vine" pathLength="1" data-x="292.9" data-y="22.5" d="M12,0 C22,2 30,-2 38,2 C46,6 50,14 48,20 C46,26 38,27 36,22 C34,18 38,15 42,17"/></g>
-        <g transform="translate(309.4 31.7) rotate(49.9)"><path class="orn-leaf l2" data-x="309.4" data-y="31.7" d="M0,0 Q5.4,-4.8 12,0 Q5.4,4.8 0,0 Z"/><path class="orn-vine" pathLength="1" data-x="317.1" data-y="40.9" d="M12,0 C22,-2 30,2 38,-2 C46,-6 50,-14 48,-20 C46,-26 38,-27 36,-22 C34,-18 38,-15 42,-17"/></g>
-        <g transform="translate(333.7 31.5) rotate(-51.1)"><path class="orn-leaf l2" data-x="333.7" data-y="31.5" d="M0,0 Q5.4,-4.8 12,0 Q5.4,4.8 0,0 Z"/><path class="orn-vine" pathLength="1" data-x="341.2" data-y="22.1" d="M12,0 C22,2 30,-2 38,2 C46,6 50,14 48,20 C46,26 38,27 36,22 C34,18 38,15 42,17"/></g>
-        <g transform="translate(358.0 30.7) rotate(47.3)"><path class="orn-leaf l2" data-x="358.0" data-y="30.7" d="M0,0 Q5.4,-4.8 12,0 Q5.4,4.8 0,0 Z"/><path class="orn-vine" pathLength="1" data-x="366.2" data-y="39.5" d="M12,0 C22,-2 30,2 38,-2 C46,-6 50,-14 48,-20 C46,-26 38,-27 36,-22 C34,-18 38,-15 42,-17"/></g>
+        <g transform="translate(42.1 29.3) rotate(227.3)"><path class="orn-leaf l2" data-x="42.1" data-y="29.3" d="M0,0 Q5.4,-4.8 12,0 Q5.4,4.8 0,0 Z"/><path class="orn-vine" pathLength="1" data-x="34.0" data-y="20.5" d="M12,0 C22,-2 30,2 38,-2 C46,-6 50,-14 48,-20 C46,-26 38,-27 36,-22 C34,-18 38,-15 42,-17"/><path class="orn-ext" pathLength="1" data-x="26.1" data-y="-13.1" d="M42,17 C52,15 60,19 68,15 C76,11 80,3 78,-3 C76,-9 68,-10 66,-5 C64,-1 68,2 72,0"/></g>
+        <g transform="translate(66.4 28.5) rotate(128.9)"><path class="orn-leaf l2" data-x="66.4" data-y="28.5" d="M0,0 Q5.4,-4.8 12,0 Q5.4,4.8 0,0 Z"/><path class="orn-vine" pathLength="1" data-x="58.9" data-y="37.9" d="M12,0 C22,2 30,-2 38,2 C46,6 50,14 48,20 C46,26 38,27 36,22 C34,18 38,15 42,17"/><path class="orn-ext" pathLength="1" data-x="26.8" data-y="50.5" d="M42,17 C52,15 60,19 68,15 C76,11 80,3 78,-3 C76,-9 68,-10 66,-5 C64,-1 68,2 72,0"/></g>
+        <g transform="translate(90.8 28.3) rotate(229.9)"><path class="orn-leaf l2" data-x="90.8" data-y="28.3" d="M0,0 Q5.4,-4.8 12,0 Q5.4,4.8 0,0 Z"/><path class="orn-vine" pathLength="1" data-x="83.0" data-y="19.1" d="M12,0 C22,-2 30,2 38,-2 C46,-6 50,-14 48,-20 C46,-26 38,-27 36,-22 C34,-18 38,-15 42,-17"/><path class="orn-ext" pathLength="1" data-x="76.8" data-y="-14.8" d="M42,17 C52,15 60,19 68,15 C76,11 80,3 78,-3 C76,-9 68,-10 66,-5 C64,-1 68,2 72,0"/></g>
+        <g transform="translate(115.1 28.4) rotate(130.5)"><path class="orn-leaf l2" data-x="115.1" data-y="28.4" d="M0,0 Q5.4,-4.8 12,0 Q5.4,4.8 0,0 Z"/><path class="orn-vine" pathLength="1" data-x="107.3" data-y="37.5" d="M12,0 C22,2 30,-2 38,2 C46,6 50,14 48,20 C46,26 38,27 36,22 C34,18 38,15 42,17"/><path class="orn-ext" pathLength="1" data-x="74.9" data-y="49.3" d="M42,17 C52,15 60,19 68,15 C76,11 80,3 78,-3 C76,-9 68,-10 66,-5 C64,-1 68,2 72,0"/></g>
+        <g transform="translate(139.3 28.7) rotate(231.0)"><path class="orn-leaf l2" data-x="139.3" data-y="28.7" d="M0,0 Q5.4,-4.8 12,0 Q5.4,4.8 0,0 Z"/><path class="orn-vine" pathLength="1" data-x="131.7" data-y="19.4" d="M12,0 C22,-2 30,2 38,-2 C46,-6 50,-14 48,-20 C46,-26 38,-27 36,-22 C34,-18 38,-15 42,-17"/><path class="orn-ext" pathLength="1" data-x="126.1" data-y="-14.6" d="M42,17 C52,15 60,19 68,15 C76,11 80,3 78,-3 C76,-9 68,-10 66,-5 C64,-1 68,2 72,0"/></g>
+        <g transform="translate(163.8 29.2) rotate(131.2)"><path class="orn-leaf l2" data-x="163.8" data-y="29.2" d="M0,0 Q5.4,-4.8 12,0 Q5.4,4.8 0,0 Z"/><path class="orn-vine" pathLength="1" data-x="155.8" data-y="38.2" d="M12,0 C22,2 30,-2 38,2 C46,6 50,14 48,20 C46,26 38,27 36,22 C34,18 38,15 42,17"/><path class="orn-ext" pathLength="1" data-x="123.3" data-y="49.6" d="M42,17 C52,15 60,19 68,15 C76,11 80,3 78,-3 C76,-9 68,-10 66,-5 C64,-1 68,2 72,0"/></g>
+        <g transform="translate(188.0 29.7) rotate(231.4)"><path class="orn-leaf l2" data-x="188.0" data-y="29.7" d="M0,0 Q5.4,-4.8 12,0 Q5.4,4.8 0,0 Z"/><path class="orn-vine" pathLength="1" data-x="180.5" data-y="20.3" d="M12,0 C22,-2 30,2 38,-2 C46,-6 50,-14 48,-20 C46,-26 38,-27 36,-22 C34,-18 38,-15 42,-17"/><path class="orn-ext" pathLength="1" data-x="175.1" data-y="-13.7" d="M42,17 C52,15 60,19 68,15 C76,11 80,3 78,-3 C76,-9 68,-10 66,-5 C64,-1 68,2 72,0"/></g>
+        <g transform="translate(212.2 30.3) rotate(51.4)"><path class="orn-leaf l2" data-x="212.2" data-y="30.3" d="M0,0 Q5.4,-4.8 12,0 Q5.4,4.8 0,0 Z"/><path class="orn-vine" pathLength="1" data-x="219.7" data-y="39.7" d="M12,0 C22,-2 30,2 38,-2 C46,-6 50,-14 48,-20 C46,-26 38,-27 36,-22 C34,-18 38,-15 42,-17"/><path class="orn-ext" pathLength="1" data-x="225.1" data-y="73.7" d="M42,17 C52,15 60,19 68,15 C76,11 80,3 78,-3 C76,-9 68,-10 66,-5 C64,-1 68,2 72,0"/></g>
+        <g transform="translate(236.4 30.8) rotate(-48.8)"><path class="orn-leaf l2" data-x="236.4" data-y="30.8" d="M0,0 Q5.4,-4.8 12,0 Q5.4,4.8 0,0 Z"/><path class="orn-vine" pathLength="1" data-x="244.3" data-y="21.8" d="M12,0 C22,2 30,-2 38,2 C46,6 50,14 48,20 C46,26 38,27 36,22 C34,18 38,15 42,17"/><path class="orn-ext" pathLength="1" data-x="276.9" data-y="10.4" d="M42,17 C52,15 60,19 68,15 C76,11 80,3 78,-3 C76,-9 68,-10 66,-5 C64,-1 68,2 72,0"/></g>
+        <g transform="translate(260.9 31.3) rotate(51.0)"><path class="orn-leaf l2" data-x="260.9" data-y="31.3" d="M0,0 Q5.4,-4.8 12,0 Q5.4,4.8 0,0 Z"/><path class="orn-vine" pathLength="1" data-x="268.4" data-y="40.6" d="M12,0 C22,-2 30,2 38,-2 C46,-6 50,-14 48,-20 C46,-26 38,-27 36,-22 C34,-18 38,-15 42,-17"/><path class="orn-ext" pathLength="1" data-x="274.1" data-y="74.6" d="M42,17 C52,15 60,19 68,15 C76,11 80,3 78,-3 C76,-9 68,-10 66,-5 C64,-1 68,2 72,0"/></g>
+        <g transform="translate(285.1 31.6) rotate(-49.5)"><path class="orn-leaf l2" data-x="285.1" data-y="31.6" d="M0,0 Q5.4,-4.8 12,0 Q5.4,4.8 0,0 Z"/><path class="orn-vine" pathLength="1" data-x="292.9" data-y="22.5" d="M12,0 C22,2 30,-2 38,2 C46,6 50,14 48,20 C46,26 38,27 36,22 C34,18 38,15 42,17"/><path class="orn-ext" pathLength="1" data-x="325.3" data-y="10.7" d="M42,17 C52,15 60,19 68,15 C76,11 80,3 78,-3 C76,-9 68,-10 66,-5 C64,-1 68,2 72,0"/></g>
+        <g transform="translate(309.4 31.7) rotate(49.9)"><path class="orn-leaf l2" data-x="309.4" data-y="31.7" d="M0,0 Q5.4,-4.8 12,0 Q5.4,4.8 0,0 Z"/><path class="orn-vine" pathLength="1" data-x="317.1" data-y="40.9" d="M12,0 C22,-2 30,2 38,-2 C46,-6 50,-14 48,-20 C46,-26 38,-27 36,-22 C34,-18 38,-15 42,-17"/><path class="orn-ext" pathLength="1" data-x="323.4" data-y="74.8" d="M42,17 C52,15 60,19 68,15 C76,11 80,3 78,-3 C76,-9 68,-10 66,-5 C64,-1 68,2 72,0"/></g>
+        <g transform="translate(333.7 31.5) rotate(-51.1)"><path class="orn-leaf l2" data-x="333.7" data-y="31.5" d="M0,0 Q5.4,-4.8 12,0 Q5.4,4.8 0,0 Z"/><path class="orn-vine" pathLength="1" data-x="341.2" data-y="22.1" d="M12,0 C22,2 30,-2 38,2 C46,6 50,14 48,20 C46,26 38,27 36,22 C34,18 38,15 42,17"/><path class="orn-ext" pathLength="1" data-x="373.3" data-y="9.5" d="M42,17 C52,15 60,19 68,15 C76,11 80,3 78,-3 C76,-9 68,-10 66,-5 C64,-1 68,2 72,0"/></g>
+        <g transform="translate(358.0 30.7) rotate(47.3)"><path class="orn-leaf l2" data-x="358.0" data-y="30.7" d="M0,0 Q5.4,-4.8 12,0 Q5.4,4.8 0,0 Z"/><path class="orn-vine" pathLength="1" data-x="366.2" data-y="39.5" d="M12,0 C22,-2 30,2 38,-2 C46,-6 50,-14 48,-20 C46,-26 38,-27 36,-22 C34,-18 38,-15 42,-17"/><path class="orn-ext" pathLength="1" data-x="374.0" data-y="73.1" d="M42,17 C52,15 60,19 68,15 C76,11 80,3 78,-3 C76,-9 68,-10 66,-5 C64,-1 68,2 72,0"/></g>
         <!-- the central bud, seen face-on: sepals behind a closed swirl of petals.
              appears small with the leaves (stage 2), swells with the vines
              (stage 3), and opens into the big flower (stage 4) -->
@@ -764,6 +763,20 @@
         <g class="orn-flower" data-x="351.8" data-y="50.9"><ellipse class="petal" cx="351.76" cy="47.71" rx="1.98" ry="2.85" transform="rotate(0 351.76 47.71)"/><ellipse class="petal" cx="354.83" cy="49.94" rx="1.98" ry="2.85" transform="rotate(72 354.83 49.94)"/><ellipse class="petal" cx="353.66" cy="53.55" rx="1.98" ry="2.85" transform="rotate(144 353.66 53.55)"/><ellipse class="petal" cx="349.87" cy="53.55" rx="1.98" ry="2.85" transform="rotate(216 349.87 53.55)"/><ellipse class="petal" cx="348.69" cy="49.94" rx="1.98" ry="2.85" transform="rotate(288 348.69 49.94)"/><circle class="heart" cx="351.8" cy="50.9" r="1.49"/></g>
         <g class="orn-flower" data-x="375.6" data-y="11.3"><ellipse class="petal" cx="375.64" cy="8.08" rx="1.98" ry="2.85" transform="rotate(0 375.64 8.08)"/><ellipse class="petal" cx="378.71" cy="10.31" rx="1.98" ry="2.85" transform="rotate(72 378.71 10.31)"/><ellipse class="petal" cx="377.53" cy="13.92" rx="1.98" ry="2.85" transform="rotate(144 377.53 13.92)"/><ellipse class="petal" cx="373.74" cy="13.92" rx="1.98" ry="2.85" transform="rotate(216 373.74 13.92)"/><ellipse class="petal" cx="372.57" cy="10.31" rx="1.98" ry="2.85" transform="rotate(288 372.57 10.31)"/><circle class="heart" cx="375.6" cy="11.3" r="1.49"/></g>
         <g class="orn-flower" data-x="401.2" data-y="48.0"><ellipse class="petal" cx="401.19" cy="44.76" rx="1.98" ry="2.85" transform="rotate(0 401.19 44.76)"/><ellipse class="petal" cx="404.26" cy="46.98" rx="1.98" ry="2.85" transform="rotate(72 404.26 46.98)"/><ellipse class="petal" cx="403.09" cy="50.59" rx="1.98" ry="2.85" transform="rotate(144 403.09 50.59)"/><ellipse class="petal" cx="399.30" cy="50.59" rx="1.98" ry="2.85" transform="rotate(216 399.30 50.59)"/><ellipse class="petal" cx="398.13" cy="46.98" rx="1.98" ry="2.85" transform="rotate(288 398.13 46.98)"/><circle class="heart" cx="401.2" cy="48.0" r="1.49"/></g>
+        <g class="orn-flower" data-x="-8.9" data-y="-21.6"><ellipse class="petal" cx="-8.93" cy="-24.80" rx="1.98" ry="2.85" transform="rotate(0 -8.93 -24.80)"/><ellipse class="petal" cx="-5.87" cy="-22.58" rx="1.98" ry="2.85" transform="rotate(72 -5.87 -22.58)"/><ellipse class="petal" cx="-7.04" cy="-18.97" rx="1.98" ry="2.85" transform="rotate(144 -7.04 -18.97)"/><ellipse class="petal" cx="-10.83" cy="-18.97" rx="1.98" ry="2.85" transform="rotate(216 -10.83 -18.97)"/><ellipse class="petal" cx="-12.00" cy="-22.58" rx="1.98" ry="2.85" transform="rotate(288 -12.00 -22.58)"/><circle class="heart" cx="-8.9" cy="-21.6" r="1.49"/></g>
+        <g class="orn-flower" data-x="23.5" data-y="86.4"><ellipse class="petal" cx="23.52" cy="83.19" rx="1.98" ry="2.85" transform="rotate(0 23.52 83.19)"/><ellipse class="petal" cx="26.59" cy="85.42" rx="1.98" ry="2.85" transform="rotate(72 26.59 85.42)"/><ellipse class="petal" cx="25.42" cy="89.03" rx="1.98" ry="2.85" transform="rotate(144 25.42 89.03)"/><ellipse class="petal" cx="21.63" cy="89.03" rx="1.98" ry="2.85" transform="rotate(216 21.63 89.03)"/><ellipse class="petal" cx="20.46" cy="85.42" rx="1.98" ry="2.85" transform="rotate(288 20.46 85.42)"/><circle class="heart" cx="23.5" cy="86.4" r="1.49"/></g>
+        <g class="orn-flower" data-x="42.1" data-y="-24.8"><ellipse class="petal" cx="42.13" cy="-28.07" rx="1.98" ry="2.85" transform="rotate(0 42.13 -28.07)"/><ellipse class="petal" cx="45.19" cy="-25.84" rx="1.98" ry="2.85" transform="rotate(72 45.19 -25.84)"/><ellipse class="petal" cx="44.02" cy="-22.23" rx="1.98" ry="2.85" transform="rotate(144 44.02 -22.23)"/><ellipse class="petal" cx="40.23" cy="-22.23" rx="1.98" ry="2.85" transform="rotate(216 40.23 -22.23)"/><ellipse class="petal" cx="39.06" cy="-25.84" rx="1.98" ry="2.85" transform="rotate(288 39.06 -25.84)"/><circle class="heart" cx="42.1" cy="-24.8" r="1.49"/></g>
+        <g class="orn-flower" data-x="70.6" data-y="85.1"><ellipse class="petal" cx="70.62" cy="81.87" rx="1.98" ry="2.85" transform="rotate(0 70.62 81.87)"/><ellipse class="petal" cx="73.69" cy="84.10" rx="1.98" ry="2.85" transform="rotate(72 73.69 84.10)"/><ellipse class="petal" cx="72.52" cy="87.71" rx="1.98" ry="2.85" transform="rotate(144 72.52 87.71)"/><ellipse class="petal" cx="68.73" cy="87.71" rx="1.98" ry="2.85" transform="rotate(216 68.73 87.71)"/><ellipse class="petal" cx="67.55" cy="84.10" rx="1.98" ry="2.85" transform="rotate(288 67.55 84.10)"/><circle class="heart" cx="70.6" cy="85.1" r="1.49"/></g>
+        <g class="orn-flower" data-x="91.7" data-y="-25.4"><ellipse class="petal" cx="91.66" cy="-28.59" rx="1.98" ry="2.85" transform="rotate(0 91.66 -28.59)"/><ellipse class="petal" cx="94.72" cy="-26.36" rx="1.98" ry="2.85" transform="rotate(72 94.72 -26.36)"/><ellipse class="petal" cx="93.55" cy="-22.76" rx="1.98" ry="2.85" transform="rotate(144 93.55 -22.76)"/><ellipse class="petal" cx="89.76" cy="-22.76" rx="1.98" ry="2.85" transform="rotate(216 89.76 -22.76)"/><ellipse class="petal" cx="88.59" cy="-26.36" rx="1.98" ry="2.85" transform="rotate(288 88.59 -26.36)"/><circle class="heart" cx="91.7" cy="-25.4" r="1.49"/></g>
+        <g class="orn-flower" data-x="118.6" data-y="85.3"><ellipse class="petal" cx="118.63" cy="82.13" rx="1.98" ry="2.85" transform="rotate(0 118.63 82.13)"/><ellipse class="petal" cx="121.70" cy="84.35" rx="1.98" ry="2.85" transform="rotate(72 121.70 84.35)"/><ellipse class="petal" cx="120.53" cy="87.96" rx="1.98" ry="2.85" transform="rotate(144 120.53 87.96)"/><ellipse class="petal" cx="116.74" cy="87.96" rx="1.98" ry="2.85" transform="rotate(216 116.74 87.96)"/><ellipse class="petal" cx="115.57" cy="84.35" rx="1.98" ry="2.85" transform="rotate(288 115.57 84.35)"/><circle class="heart" cx="118.6" cy="85.3" r="1.49"/></g>
+        <g class="orn-flower" data-x="140.7" data-y="-24.7"><ellipse class="petal" cx="140.74" cy="-27.92" rx="1.98" ry="2.85" transform="rotate(0 140.74 -27.92)"/><ellipse class="petal" cx="143.80" cy="-25.69" rx="1.98" ry="2.85" transform="rotate(72 143.80 -25.69)"/><ellipse class="petal" cx="142.63" cy="-22.09" rx="1.98" ry="2.85" transform="rotate(144 142.63 -22.09)"/><ellipse class="petal" cx="138.84" cy="-22.09" rx="1.98" ry="2.85" transform="rotate(216 138.84 -22.09)"/><ellipse class="petal" cx="137.67" cy="-25.69" rx="1.98" ry="2.85" transform="rotate(288 137.67 -25.69)"/><circle class="heart" cx="140.7" cy="-24.7" r="1.49"/></g>
+        <g class="orn-flower" data-x="259.5" data-y="84.7"><ellipse class="petal" cx="259.46" cy="81.47" rx="1.98" ry="2.85" transform="rotate(0 259.46 81.47)"/><ellipse class="petal" cx="262.53" cy="83.70" rx="1.98" ry="2.85" transform="rotate(72 262.53 83.70)"/><ellipse class="petal" cx="261.36" cy="87.31" rx="1.98" ry="2.85" transform="rotate(144 261.36 87.31)"/><ellipse class="petal" cx="257.57" cy="87.31" rx="1.98" ry="2.85" transform="rotate(216 257.57 87.31)"/><ellipse class="petal" cx="256.40" cy="83.70" rx="1.98" ry="2.85" transform="rotate(288 256.40 83.70)"/><circle class="heart" cx="259.5" cy="84.7" r="1.49"/></g>
+        <g class="orn-flower" data-x="281.6" data-y="-25.3"><ellipse class="petal" cx="281.57" cy="-28.57" rx="1.98" ry="2.85" transform="rotate(0 281.57 -28.57)"/><ellipse class="petal" cx="284.63" cy="-26.35" rx="1.98" ry="2.85" transform="rotate(72 284.63 -26.35)"/><ellipse class="petal" cx="283.46" cy="-22.74" rx="1.98" ry="2.85" transform="rotate(144 283.46 -22.74)"/><ellipse class="petal" cx="279.67" cy="-22.74" rx="1.98" ry="2.85" transform="rotate(216 279.67 -22.74)"/><ellipse class="petal" cx="278.50" cy="-26.35" rx="1.98" ry="2.85" transform="rotate(288 278.50 -26.35)"/><circle class="heart" cx="281.6" cy="-25.3" r="1.49"/></g>
+        <g class="orn-flower" data-x="308.5" data-y="85.4"><ellipse class="petal" cx="308.54" cy="82.14" rx="1.98" ry="2.85" transform="rotate(0 308.54 82.14)"/><ellipse class="petal" cx="311.61" cy="84.37" rx="1.98" ry="2.85" transform="rotate(72 311.61 84.37)"/><ellipse class="petal" cx="310.44" cy="87.97" rx="1.98" ry="2.85" transform="rotate(144 310.44 87.97)"/><ellipse class="petal" cx="306.65" cy="87.97" rx="1.98" ry="2.85" transform="rotate(216 306.65 87.97)"/><ellipse class="petal" cx="305.48" cy="84.37" rx="1.98" ry="2.85" transform="rotate(288 305.48 84.37)"/><circle class="heart" cx="308.5" cy="85.4" r="1.49"/></g>
+        <g class="orn-flower" data-x="329.6" data-y="-25.1"><ellipse class="petal" cx="329.58" cy="-28.32" rx="1.98" ry="2.85" transform="rotate(0 329.58 -28.32)"/><ellipse class="petal" cx="332.65" cy="-26.09" rx="1.98" ry="2.85" transform="rotate(72 332.65 -26.09)"/><ellipse class="petal" cx="331.47" cy="-22.49" rx="1.98" ry="2.85" transform="rotate(144 331.47 -22.49)"/><ellipse class="petal" cx="327.68" cy="-22.49" rx="1.98" ry="2.85" transform="rotate(216 327.68 -22.49)"/><ellipse class="petal" cx="326.51" cy="-26.09" rx="1.98" ry="2.85" transform="rotate(288 326.51 -26.09)"/><circle class="heart" cx="329.6" cy="-25.1" r="1.49"/></g>
+        <g class="orn-flower" data-x="358.1" data-y="84.8"><ellipse class="petal" cx="358.07" cy="81.62" rx="1.98" ry="2.85" transform="rotate(0 358.07 81.62)"/><ellipse class="petal" cx="361.14" cy="83.85" rx="1.98" ry="2.85" transform="rotate(72 361.14 83.85)"/><ellipse class="petal" cx="359.97" cy="87.45" rx="1.98" ry="2.85" transform="rotate(144 359.97 87.45)"/><ellipse class="petal" cx="356.18" cy="87.45" rx="1.98" ry="2.85" transform="rotate(216 356.18 87.45)"/><ellipse class="petal" cx="355.01" cy="83.85" rx="1.98" ry="2.85" transform="rotate(288 355.01 83.85)"/><circle class="heart" cx="358.1" cy="84.8" r="1.49"/></g>
+        <g class="orn-flower" data-x="376.6" data-y="-26.4"><ellipse class="petal" cx="376.58" cy="-29.64" rx="1.98" ry="2.85" transform="rotate(0 376.58 -29.64)"/><ellipse class="petal" cx="379.64" cy="-27.41" rx="1.98" ry="2.85" transform="rotate(72 379.64 -27.41)"/><ellipse class="petal" cx="378.47" cy="-23.81" rx="1.98" ry="2.85" transform="rotate(144 378.47 -23.81)"/><ellipse class="petal" cx="374.68" cy="-23.81" rx="1.98" ry="2.85" transform="rotate(216 374.68 -23.81)"/><ellipse class="petal" cx="373.51" cy="-27.41" rx="1.98" ry="2.85" transform="rotate(288 373.51 -27.41)"/><circle class="heart" cx="376.6" cy="-26.4" r="1.49"/></g>
+        <g class="orn-flower" data-x="409.0" data-y="81.6"><ellipse class="petal" cx="409.03" cy="78.36" rx="1.98" ry="2.85" transform="rotate(0 409.03 78.36)"/><ellipse class="petal" cx="412.10" cy="80.58" rx="1.98" ry="2.85" transform="rotate(72 412.10 80.58)"/><ellipse class="petal" cx="410.93" cy="84.19" rx="1.98" ry="2.85" transform="rotate(144 410.93 84.19)"/><ellipse class="petal" cx="407.14" cy="84.19" rx="1.98" ry="2.85" transform="rotate(216 407.14 84.19)"/><ellipse class="petal" cx="405.97" cy="80.58" rx="1.98" ry="2.85" transform="rotate(288 405.97 80.58)"/><circle class="heart" cx="409.0" cy="81.6" r="1.49"/></g>
         <g class="orn-flower" data-x="200.2" data-y="30.0" data-bloom="1"><ellipse class="petal" cx="200.20" cy="21.68" rx="5.12" ry="7.36" transform="rotate(0 200.20 21.68)"/><ellipse class="petal" cx="208.11" cy="27.43" rx="5.12" ry="7.36" transform="rotate(72 208.11 27.43)"/><ellipse class="petal" cx="205.09" cy="36.73" rx="5.12" ry="7.36" transform="rotate(144 205.09 36.73)"/><ellipse class="petal" cx="195.31" cy="36.73" rx="5.12" ry="7.36" transform="rotate(216 195.31 36.73)"/><ellipse class="petal" cx="192.29" cy="27.43" rx="5.12" ry="7.36" transform="rotate(288 192.29 27.43)"/><ellipse class="petal inner" cx="202.65" cy="26.63" rx="3.04" ry="4.48" transform="rotate(36 202.65 26.63)"/><ellipse class="petal inner" cx="204.16" cy="31.29" rx="3.04" ry="4.48" transform="rotate(108 204.16 31.29)"/><ellipse class="petal inner" cx="200.20" cy="34.16" rx="3.04" ry="4.48" transform="rotate(180 200.20 34.16)"/><ellipse class="petal inner" cx="196.24" cy="31.29" rx="3.04" ry="4.48" transform="rotate(252 196.24 31.29)"/><ellipse class="petal inner" cx="197.75" cy="26.63" rx="3.04" ry="4.48" transform="rotate(324 197.75 26.63)"/><circle class="heart" cx="200.2" cy="30.0" r="3.84"/></g>
       </svg>
     </header>
@@ -884,22 +897,20 @@
        1 underline (built from the flakes themselves)
        2 leaves along the line + a small bud in the centre
        3 vines off every leaf + the bud swells
-       4 the central flower opens; every vine reaches one more curl -- the
-         upper ones up to grab a letter of "The Work", the lower ones down
-         to rest on a card
+       4 the central flower opens; every vine carries on into a second
+         swirl curling the opposite way
        5 flowers bloom along all the vines
        6 everything crumbles to dust and the cycle starts again
      Synced to the hero's 9s clock by reading the drop's own CSS animation. */
   (function(){
     var orn=document.getElementById('ornament');
     var drop=document.querySelector('.droplet');
-    var title=document.getElementById('worlds-title');
-    if(!orn||!drop||!title) return;
+    if(!orn||!drop) return;
     if(matchMedia('(prefers-reduced-motion: reduce)').matches){
       orn.classList.add('s1','s2','s3','s4','s5'); return;
     }
     var NS='http://www.w3.org/2000/svg';
-    var CYCLE=9000, SHATTER=0.84*CYCLE, stage=0, ext=[];
+    var CYCLE=9000, SHATTER=0.84*CYCLE, stage=0;
     var VB_Y=-26, VB_W=400;                       // ornament viewBox origin / width
     var layer=document.createElement('div'); layer.className='feed-layer';
     document.body.appendChild(layer);
@@ -908,84 +919,9 @@
       var r=el.getBoundingClientRect();
       return {x:r.left+scrollX, y:r.top+scrollY, w:r.width, h:r.height};
     }
-    // client (viewport) coords -> ornament user coords, and back to page coords
-    function toOrn(cx,cy){ var r=orn.getBoundingClientRect(), k=r.width/VB_W; return [(cx-r.left)/k,(cy-r.top)/k+VB_Y]; }
+    // ornament user coords -> page coords
     function ornToPage(x,y){ var o=pageRect(orn), k=o.w/VB_W; return [o.x+x*k, o.y+(y-VB_Y)*k]; }
-    function vineTip(v){
-      var q=v.getPointAtLength(v.getTotalLength());
-      var m=orn.getScreenCTM().inverse().multiply(v.getScreenCTM());
-      return [m.a*q.x+m.c*q.y+m.e, m.b*q.x+m.d*q.y+m.f];
-    }
-    function letterPoints(){                      // a point on the lower part of each letter
-      var tn=title.firstChild, txt=tn.textContent, out=[], rg=document.createRange();
-      for(var i=0;i<txt.length;i++){
-        if(!txt[i].trim()) continue;
-        rg.setStart(tn,i); rg.setEnd(tn,i+1);
-        var r=rg.getBoundingClientRect();
-        out.push(toOrn(r.left+r.width/2, r.bottom-r.height*.3));
-      }
-      return out;
-    }
     function el(tag,attrs){ var e=document.createElementNS(NS,tag); for(var k in attrs) e.setAttribute(k,attrs[k]); return e; }
-    function flowerEl(cx,cy,r){
-      var g=el('g',{'class':'orn-flower ext','data-x':cx.toFixed(1),'data-y':cy.toFixed(1)});
-      for(var a=0;a<360;a+=72){
-        var px=cx+5.2*r*Math.cos((a-90)*Math.PI/180), py=cy+5.2*r*Math.sin((a-90)*Math.PI/180);
-        g.appendChild(el('ellipse',{'class':'petal',cx:px.toFixed(2),cy:py.toFixed(2),rx:(3.2*r).toFixed(2),ry:(4.6*r).toFixed(2),transform:'rotate('+a+' '+px.toFixed(2)+' '+py.toFixed(2)+')'}));
-      }
-      g.appendChild(el('circle',{'class':'heart',cx:cx.toFixed(1),cy:cy.toFixed(1),r:(2.4*r).toFixed(2)}));
-      return g;
-    }
-    function f(n){return n.toFixed(1)}
-
-    // build (or rebuild) the stage-4 reaches from the current layout
-    function buildExt(){
-      ext.forEach(function(e){e.remove()}); ext=[];
-      var tips=[].slice.call(orn.querySelectorAll('.orn-vine')).map(vineTip);
-      var up=tips.filter(function(t){return t[1]<30}).sort(function(a,b){return a[0]-b[0]});
-      var down=tips.filter(function(t){return t[1]>=30}).sort(function(a,b){return a[0]-b[0]});
-      var letters=letterPoints();
-      var cards=[].slice.call(document.querySelectorAll('.grid .card')).map(function(c){return c.getBoundingClientRect()});
-      var firstRow=cards.length?Math.min.apply(null,cards.map(function(c){return c.top})):0;
-      cards=cards.filter(function(c){return c.top-firstRow<4});
-      var ornR=orn.getBoundingClientRect(), k=ornR.width/VB_W;
-
-      up.forEach(function(t,i){                 // climb up and coil around a letter
-        var L=letters[Math.round(i*(letters.length-1)/Math.max(1,up.length-1))];
-        if(!L) return;
-        var x0=t[0],y0=t[1],lx=L[0],ly=L[1],dy=y0-ly;
-        var d='M'+f(x0)+','+f(y0)+' C'+f(x0)+','+f(y0-dy*.45)+' '+f(lx+(x0-lx)*.3)+','+f(ly+dy*.35)+' '+f(lx)+','+f(ly)
-             +' C'+f(lx+6)+','+f(ly-2)+' '+f(lx+6)+','+f(ly-10)+' '+f(lx)+','+f(ly-10)
-             +' C'+f(lx-6)+','+f(ly-10)+' '+f(lx-6)+','+f(ly-3)+' '+f(lx-1)+','+f(ly-3);
-        add(d,x0,y0,lx+7,ly-12);
-      });
-      down.forEach(function(t,i){               // fall and come to rest on a card
-        var x0=t[0],y0=t[1], cx=ornR.left+x0*k, best=null,bd=1e9;
-        cards.forEach(function(c){ var dd=cx<c.left?c.left-cx:(cx>c.right?cx-c.right:0); if(dd<bd){bd=dd;best=c;} });
-        if(!best) return;
-        var tx=toOrn(Math.min(Math.max(cx,best.left+24),best.right-24),0)[0];
-        var ty=toOrn(0,best.top)[1]+1, s=i%2?1:-1, dy=ty-y0;
-        var d='M'+f(x0)+','+f(y0)+' C'+f(x0+10*s)+','+f(y0+dy*.4)+' '+f(tx-12*s)+','+f(ty-dy*.3)+' '+f(tx)+','+f(ty)
-             +' C'+f(tx+5)+','+f(ty+4)+' '+f(tx+11)+','+f(ty+1)+' '+f(tx+10)+','+f(ty-4)
-             +' C'+f(tx+9)+','+f(ty-8)+' '+f(tx+4)+','+f(ty-7)+' '+f(tx+5)+','+f(ty-4);
-        add(d,x0,y0,tx+7,ty-5);
-      });
-      function add(d,x0,y0,fx,fy){
-        var p=el('path',{'class':'orn-ext',pathLength:'1',d:d,'data-x':f(x0),'data-y':f(y0)});
-        p.style.transitionDelay=(Math.random()*.4).toFixed(2)+'s';
-        orn.appendChild(p); ext.push(p);
-        var fl=flowerEl(fx,fy,.6); orn.appendChild(fl); ext.push(fl);
-      }
-    }
-    // keep the reaches attached to the letters/cards if the layout changes
-    var rz; addEventListener('resize',function(){
-      if(stage<4||!ext.length) return;
-      clearTimeout(rz); rz=setTimeout(function(){
-        orn.classList.add('resetting'); buildExt();
-        ext.forEach(function(e){ if(e.tagName==='path'||stage>=5) e.classList.add('fed'); });
-        void orn.getBoundingClientRect(); orn.classList.remove('resetting');
-      },150);
-    });
 
     function fly(tx,ty,x0,y0,onland){             // one mote, page coords
       var c1x=x0+(Math.random()-.5)*220, c1y=y0+(ty-y0)*.35;
@@ -1010,7 +946,6 @@
         for(var j=0;j<n;j++){ var q=line.getPointAtLength(L*(j+.5)/n+(Math.random()-.5)*L*.02); pts.push([q.x,q.y]); }
         pts.sort(function(){return Math.random()-.5});
       } else {
-        if(next===4) buildExt();
         var sel={2:'.orn-leaf.l2,.orn-bud',3:'.orn-vine,.orn-bud',
                  4:'.orn-flower[data-bloom],.orn-ext',5:'.orn-flower:not([data-bloom])',
                  6:'.orn-flower[data-bloom]'}[next];
@@ -1073,7 +1008,6 @@
         e.classList.remove('fed','fed2','fed3','fed4','fed5','bloomed');
       });
       var bits=document.getElementById('orn-line-bits'); while(bits.firstChild) bits.firstChild.remove();
-      ext.forEach(function(e){e.remove()}); ext=[];
       void orn.getBoundingClientRect();
       orn.classList.remove('dissolve');
       requestAnimationFrame(function(){ requestAnimationFrame(function(){ orn.classList.remove('resetting'); }); });
