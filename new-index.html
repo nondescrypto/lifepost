@@ -439,11 +439,13 @@
   .about{padding:64px 0;border-top:1px solid var(--hair);margin-top:48px}
   .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
   .about p{font-family:var(--serif);font-size:1.15rem;max-width:46ch}
-  .contact h2{font-family:var(--serif);font-weight:500;font-size:1.6rem;margin:0 0 16px}
+  /* Connect: same label style as About, title and links set to the right */
+  .contact{text-align:right}
+  .contact h2.section-eyebrow{font-weight:400;margin:0 0 16px}
   .contact a.link{
     display:inline-block;font-family:var(--sans);letter-spacing:.04em;
     border-bottom:1px solid var(--clay);text-decoration:none;
-    padding-bottom:2px;margin:0 18px 10px 0
+    padding-bottom:2px;margin:0 0 10px 18px
   }
   .contact a.link:hover{color:var(--clay)}
 
@@ -884,10 +886,10 @@
     <div class="about-grid">
       <div>
         <p class="section-eyebrow">About</p>
-        <p>I move between things people usually keep apart — the rigor of markets and the looseness of the dance floor, the blueprint and the birth chart. This site is where those worlds sit next to each other.</p>
+        <p>Pending description</p>
       </div>
       <div class="contact">
-        <h2>Say hello</h2>
+        <h2 class="section-eyebrow">Connect</h2>
         <a class="link" href="mailto:you@example.com">Email</a>
         <a class="link" href="https://github.com/nondescrypto">GitHub</a>
         <a class="link" href="#">Instagram</a>
