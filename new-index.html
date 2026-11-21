@@ -362,10 +362,8 @@
   .work-head .section-title{font-size:clamp(2.6rem,7vw,4.4rem);margin:0;line-height:1.05}
   .ornament{display:block;width:min(440px,92%);height:auto;margin:6px auto 0;overflow:visible}
   .orn-vine{fill:none;stroke-linecap:round;stroke-dasharray:1 1;stroke-dashoffset:1}
-  /* the underline isn't drawn: it's revealed through a mask that each landed
-     dust flake paints a little patch of, so it builds up out of the dust */
+  /* the underline is always there; everything else grows on it */
   .orn-line{fill:none;stroke-linecap:round;stroke:var(--line);stroke-width:1.5;opacity:.75}
-  .orn-bit{fill:#fff;transform-box:fill-box;transform-origin:center}
   /* every piece is fully hidden (opacity 0, not just scaled/dashed away)
      until its own flake lands on it and it gets .fed */
   .orn-vine{stroke:var(--sage);stroke-width:1.1;opacity:0;
@@ -376,7 +374,6 @@
     transform:scale(0) rotate(-90deg);transition:transform 1.3s cubic-bezier(.2,.8,.3,1.25),opacity .3s}
   .orn-flower .petal{fill:var(--paper);opacity:.92}
   .orn-flower .heart{fill:var(--gold)}
-  .ornament.s1 .orn-line{mask:none}
   .ornament.s2 .orn-leaf.l2,.orn-leaf.fed{opacity:.9;transform:scale(1) rotate(0)}
   .ornament.s3 .orn-vine,.orn-vine.fed{opacity:1;stroke-dashoffset:0}
   .ornament.s4 .orn-flower[data-bloom],.ornament.s5 .orn-flower,.orn-flower.fed{opacity:1;transform:scale(1) rotate(0)}
@@ -386,9 +383,10 @@
     stroke-dasharray:1 1;stroke-dashoffset:1;opacity:0;
     transition:stroke-dashoffset 2.8s cubic-bezier(.4,0,.2,1),opacity .2s}
   .orn-ext.fed{opacity:1;stroke-dashoffset:0}
-  /* stage 6: the whole thing crumbles to dust, then quietly resets */
-  .ornament{transition:opacity 1.5s ease,filter 1.5s ease}
-  .ornament.dissolve{opacity:0;filter:blur(1.5px)}
+  /* stage 6: everything that grew crumbles to dust (the underline stays),
+     then quietly resets */
+  .ornament > :not(.orn-line){transition:opacity 1.5s ease,filter 1.5s ease}
+  .ornament.dissolve > :not(.orn-line){opacity:0;filter:blur(1.5px)}
   .ornament.resetting,.ornament.resetting *{transition:none !important}
   /* the central bud (face-on): small with the leaves, fuller with the
      vines, and it gives way to the big flower when that blooms. Selectors
@@ -715,10 +713,7 @@
       <!-- grows a stage each time the hero's crystal shatters and its dust
            flies down into it: underline -> leaves -> vines -> flowers -->
       <svg class="ornament" id="ornament" viewBox="0 -26 400 116" aria-hidden="true">
-        <mask id="orn-line-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="400" height="64">
-          <g id="orn-line-bits"></g>
-        </mask>
-        <path class="orn-line" id="orn-line" mask="url(#orn-line-mask)" d="M30,30 C120,24 280,36 370,30"/>
+        <path class="orn-line" id="orn-line" d="M30,30 C120,24 280,36 370,30"/>
         <!-- along the whole line: a leaf (stage 2) with a long vine curling off
              its tip (stage 3) and a flower in the curl (stage 4). In the middle,
              a bud on a short stem (stage 3) that opens into the big flower
@@ -893,8 +888,8 @@
     addEventListener('resize',place);
   })();
   /* Each time the crystal shatters, a stream of its dust flies down the page
-     into the ornament under "The Work", which grows one stage per shatter:
-       1 underline (built from the flakes themselves)
+     into the ornament under "The Work". The underline is always there; on
+     each shatter one more stage grows on it:
        2 leaves along the line + a small bud in the centre
        3 vines off every leaf + the bud swells
        4 the central flower opens; every vine carries on into a second
@@ -907,10 +902,10 @@
     var drop=document.querySelector('.droplet');
     if(!orn||!drop) return;
     if(matchMedia('(prefers-reduced-motion: reduce)').matches){
-      orn.classList.add('s1','s2','s3','s4','s5'); return;
+      orn.classList.add('s2','s3','s4','s5'); return;
     }
     var NS='http://www.w3.org/2000/svg';
-    var CYCLE=9000, SHATTER=0.84*CYCLE, stage=0;
+    var CYCLE=9000, SHATTER=0.84*CYCLE, stage=1;   // 1 = just the underline
     var VB_Y=-26, VB_W=400;                       // ornament viewBox origin / width
     var layer=document.createElement('div'); layer.className='feed-layer';
     document.body.appendChild(layer);
@@ -941,32 +936,17 @@
       var next=stage+1, src=pageRect(drop);
       var sx=src.x+src.w/2, sy=src.y+src.h/2;
       var pts=[], els=null, n=16, landed=0;
-      if(next===1){                       // spread the flakes evenly along the line itself
-        var line=document.getElementById('orn-line'), L=line.getTotalLength();
-        for(var j=0;j<n;j++){ var q=line.getPointAtLength(L*(j+.5)/n+(Math.random()-.5)*L*.02); pts.push([q.x,q.y]); }
-        pts.sort(function(){return Math.random()-.5});
-      } else {
-        var sel={2:'.orn-leaf.l2,.orn-bud',3:'.orn-vine,.orn-bud',
-                 4:'.orn-flower[data-bloom],.orn-ext',5:'.orn-flower:not([data-bloom])',
-                 6:'.orn-flower[data-bloom]'}[next];
-        els=[].slice.call(orn.querySelectorAll(sel)).sort(function(){return Math.random()-.5});
-        if(next===6) els=[els[0],els[0],els[0],els[0],els[0],els[0],els[0],els[0],els[0],els[0]];
-        n=els.length;
-        pts=els.map(function(e){return [+e.dataset.x,+e.dataset.y];});
-      }
+      var sel={2:'.orn-leaf.l2,.orn-bud',3:'.orn-vine,.orn-bud',
+               4:'.orn-flower[data-bloom],.orn-ext',5:'.orn-flower:not([data-bloom])',
+               6:'.orn-flower[data-bloom]'}[next];
+      els=[].slice.call(orn.querySelectorAll(sel)).sort(function(){return Math.random()-.5});
+      if(next===6) els=[els[0],els[0],els[0],els[0],els[0],els[0],els[0],els[0],els[0],els[0]];
+      n=els.length;
+      pts=els.map(function(e){return [+e.dataset.x,+e.dataset.y];});
       pts.forEach(function(t,i){
         var tp=ornToPage(t[0],t[1]);
         fly(tp[0],tp[1],sx+(Math.random()-.5)*30,sy+(Math.random()-.5)*30,function(){
           var piece=els&&els[i];
-          if(next===1){
-            // the flake settles into the line: a patch of it spreads out from where it landed
-            var b=el('ellipse',{'class':'orn-bit',cx:t[0],cy:t[1],rx:340/n*.75,ry:5});
-            document.getElementById('orn-line-bits').appendChild(b);
-            b.animate([{transform:'scale(0,1)'},{transform:'scale(1,1)'}],
-                      {duration:700,easing:'cubic-bezier(.2,.7,.3,1)',fill:'forwards'});
-            if(++landed===n) setTimeout(function(){ stage=1; orn.classList.add('s1'); },800);
-            return;
-          }
           if(next===6){ if(++landed===n) disintegrate(); return; }
           if(piece){
             piece.classList.add('fed','fed'+next);
@@ -980,7 +960,7 @@
     // stage 6: crumble every grown piece into falling dust, then reset
     function disintegrate(){
       stage=6;
-      var pieces=[].slice.call(orn.querySelectorAll('.orn-line,.fed,.orn-bud')), budget=110;
+      var pieces=[].slice.call(orn.querySelectorAll('.fed,.orn-bud')), budget=110;
       var colors=['#ffffff','#e9e3d6','#7c9a6a','#7c9a6a','#d1a24e'];
       pieces.forEach(function(p){
         var r=p.getBoundingClientRect(); if(!r.width&&!r.height) return;
@@ -1003,15 +983,14 @@
     }
     function reset(){
       orn.classList.add('resetting');
-      orn.classList.remove('s1','s2','s3','s4','s5');
+      orn.classList.remove('s2','s3','s4','s5');
       [].forEach.call(orn.querySelectorAll('.fed,.bloomed'),function(e){
         e.classList.remove('fed','fed2','fed3','fed4','fed5','bloomed');
       });
-      var bits=document.getElementById('orn-line-bits'); while(bits.firstChild) bits.firstChild.remove();
       void orn.getBoundingClientRect();
       orn.classList.remove('dissolve');
       requestAnimationFrame(function(){ requestAnimationFrame(function(){ orn.classList.remove('resetting'); }); });
-      stage=0;
+      stage=1;
     }
 
     // sync to the drop's animation clock; runs forever (6 stages, then repeat)
