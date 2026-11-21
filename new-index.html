@@ -334,7 +334,7 @@
   .card{
     position:relative;overflow:hidden;border:1px solid var(--hair);background:var(--panel);
     padding:28px 24px 72px;display:grid;grid-row:span 4;grid-template-rows:subgrid;
-    row-gap:0;justify-items:center;align-content:start;text-align:center;
+    row-gap:0;justify-items:center;align-content:start;text-align:center;isolation:isolate;
     transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
     color:inherit;
   }
@@ -351,12 +351,12 @@
   .card:hover{transform:translateY(-4px);
     box-shadow:0 14px 34px rgba(0,0,0,.5);border-color:rgba(242,239,233,.28)}
   /* line-art illustration filling the whole card, behind the words */
-  .card-art{position:absolute;inset:0;width:100%;height:100%;
+  .card-art{position:absolute;inset:0;width:100%;height:100%;z-index:-1;
     fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;
     opacity:.2;transform:scale(1.4);transform-origin:50% 78%;
     transition:opacity .35s ease;pointer-events:none}
   .card:hover .card-art{opacity:.32}
-  .card h3,.card p{position:relative}
+  .card p{position:relative}
   .card h3{font-family:var(--serif);font-weight:500;font-size:1.55rem;margin:0 0 10px}
   .card p{font-size:.92rem;margin:0;opacity:.85;max-width:30ch;
     text-shadow:0 1px 10px var(--panel),0 0 4px var(--panel)}
