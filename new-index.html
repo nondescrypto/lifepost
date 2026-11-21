@@ -437,14 +437,7 @@
 
   /* ---- Writing ---------------------------------------------------- */
   .writing{padding:72px 0 24px}
-  .posts{list-style:none;margin:0 auto;padding:0;max-width:640px;border-top:1px solid var(--hair)}
-  .posts li{border-bottom:1px solid var(--hair)}
-  .posts a{display:flex;justify-content:space-between;align-items:baseline;gap:16px;
-    padding:18px 4px;text-decoration:none;font-family:var(--serif);font-size:1.25rem;
-    transition:color .2s,padding .2s}
-  .posts a::after{content:"→";font-family:var(--sans);font-size:.95rem;opacity:.45;transition:opacity .2s}
-  .posts a:hover{color:var(--gold);padding-left:10px}
-  .posts a:hover::after{opacity:1}
+  .pending{text-align:center;font-family:var(--serif);font-style:italic;font-size:1.15rem;opacity:.6;margin:0}
 
   /* ---- Footer: Connect ----------------------------------------------- */
   .site-foot{margin-top:72px;padding:44px 24px 60px;border-top:1px solid var(--hair);text-align:left}
@@ -888,12 +881,7 @@
     <header class="work-head">
       <h2 class="section-title" id="writing-title">Writing</h2>
     </header>
-    <ul class="posts">
-      <li><a href="docs/writings/ancestral-future.html">Ancestral Future</a></li>
-      <li><a href="docs/writings/bottom-up.html">Blockchain from the Bottom Up</a></li>
-      <li><a href="docs/writings/digital-twin.html">Making a Digital Twin with RWAs</a></li>
-      <li><a href="docs/writings/manufacturing-care.html">Manufacturing Care</a></li>
-    </ul>
+    <p class="pending">Pending</p>
   </section>
 </main>
 
